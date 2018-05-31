@@ -1,3 +1,30 @@
+/* For mobile phones: */
+
+/* Variable declaration */
+/* Border box declaration */
+
+html {
+  @maintitle box-sizing: border-box;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /*font-size: 62.5%;*/
+  /*--main-font: "";*/
+  --color1: #222;
+  --color2: #eeeeee;
+  --color3: #f39f41;
+}
+
+/* inherit border-box on all elements in the universe and before and after */
+*,
+*:before,
+maintit *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background: var(--color2);
+}
+
 .App {
   text-align: center;
 }
@@ -11,6 +38,7 @@
   background-color: #222;
   padding: 20px;
   color: white;
+  font-size: 3rem;
 }
 
 .App-title {
@@ -22,6 +50,105 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*$tile-size:       56px;
+$square-size:     56px;
+$squares-per-row: 11;
+$squares-per-col: 7;
+$gutter-width:    8px;
+$board-width:     616px;
+$board-height:    392px;*/
+
+.board-border {
+  position: relative;
+  background: $lightgray;
+  margin: 2rem auto;
+  width: 632px;
+  height: 408px;
+  padding: 8px;
+}
+
+.board {
+  position: relative;
+  width: 616px;
+  height: 392px;
+  display: flex;
+  flex-wrap: wrap;
+  user-select: none;
+}
+
+.board-square {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  background: #222;
+  border-top: 1px solid #aaa;
+  border-left: 1px solid #aaa;
+}
+
+.dragged-over {
+  background: red;
+}
+
+.tile {
+  position: absolute;
+  z-index: 2;
+  width: 56px;
+  height: 56px;
+  background: #ffd959;
+  cursor: move;
+  box-shadow: 0.5px 0.5px 0 #bda259, 1px 1px 0 #bda259, 1.5px 1.5px 0 #bda259,
+    2px 2px 0 #bda259, 2.5px 2.5px 0 #bda259, 3px 3px 0 #bda259;
+}
+
+.is-dragging {
+  opacity: 0.7;
+}
+
+.is-established {
+  background: lighten(yellow, 15%);
+}
+
+.draggable {
+  cursor: move;
+}
+
+.tile-letter {
+  position: absolute;
+  /*border-width: 1px;*/
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #222;
+  font-size: 1.75rem;
+  line-height: 56px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.tile-points {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 5px;
+  height: 5px;
+  line-height: 5px;
+  text-align: center;
+  font-size: 1rem;
+  color: #222;
+}
+
+.controls {
+  position: relative;
+  margin: 1rem auto;
+  width: $board-width + ($gutter-width * 2);
+  text-align: right;
 }
