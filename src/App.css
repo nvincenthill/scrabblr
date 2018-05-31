@@ -27,6 +27,9 @@ body {
 
 .App {
   text-align: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 10vmin 70vmin 10vmin;
 }
 
 .App-logo {
@@ -36,13 +39,18 @@ body {
 
 .App-header {
   background-color: #222;
-  padding: 20px;
+  /*align-self: center;*/
+  /*padding: 20px;*/
   color: white;
-  font-size: 3rem;
+  font-size: 1rem;
+  /*margin-bottom: 2vmax;*/
+  grid-column: 1 / span 5;
+  display: grid;
 }
 
 .App-title {
-  font-size: 1.5em;
+  align-self: center;
+  font-size: 2rem;
 }
 
 .App-intro {
@@ -58,6 +66,16 @@ body {
   }
 }
 
+.sidebar {
+  grid-column: span 3;
+  display: grid;
+}
+
+#scrabble {
+  margin: 2vmax 2vmax;
+  text-align: center;
+}
+
 /*$tile-size:       56px;
 $square-size:     56px;
 $squares-per-row: 11;
@@ -66,22 +84,18 @@ $gutter-width:    8px;
 $board-width:     616px;
 $board-height:    392px;*/
 
-.board-border {
-  position: relative;
-  background: $lightgray;
-  margin: 2rem auto;
-  width: 632px;
-  height: 408px;
-  padding: 8px;
-}
-
 .board {
-  position: relative;
-  width: 616px;
-  height: 392px;
   display: flex;
   flex-wrap: wrap;
   user-select: none;
+}
+
+.board-border {
+  position: relative;
+  background: grey;
+  width: 560px;
+  height: 392px;
+  padding: 8px;
 }
 
 .board-square {
@@ -89,12 +103,10 @@ $board-height:    392px;*/
   width: 56px;
   height: 56px;
   background: #222;
-  border-top: 1px solid #aaa;
-  border-left: 1px solid #aaa;
 }
 
 .dragged-over {
-  background: red;
+  background: grey;
 }
 
 .tile {
@@ -104,6 +116,8 @@ $board-height:    392px;*/
   height: 56px;
   background: #ffd959;
   cursor: move;
+  border-radius: 1px;
+  border-color: white;
   box-shadow: 0.5px 0.5px 0 #bda259, 1px 1px 0 #bda259, 1.5px 1.5px 0 #bda259,
     2px 2px 0 #bda259, 2.5px 2.5px 0 #bda259, 3px 3px 0 #bda259;
 }
@@ -113,7 +127,7 @@ $board-height:    392px;*/
 }
 
 .is-established {
-  background: lighten(yellow, 15%);
+  background: yellow;
 }
 
 .draggable {
@@ -142,13 +156,20 @@ $board-height:    392px;*/
   height: 5px;
   line-height: 5px;
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: #222;
 }
 
 .controls {
   position: relative;
   margin: 1rem auto;
-  width: $board-width + ($gutter-width * 2);
-  text-align: right;
+  width: 632px;
+  text-align: center;
+  margin-bottom: 2vmax;
+}
+
+.footer {
+  grid-column: 1 / span 5;
+  display: grid;
+  align-items: center;
 }

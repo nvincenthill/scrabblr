@@ -21,7 +21,6 @@ class Scrabble extends Component {
     super();
 
     this.updateDroppedTilePosition = this.updateDroppedTilePosition.bind(this);
-    this.resetTiles = this.resetTiles.bind(this);
   }
 
   updateDroppedTilePosition({ x, y }, tile) {
@@ -37,10 +36,6 @@ class Scrabble extends Component {
     stateTiles[index] = { ...tile, x, y };
 
     this.props.updateTiles(stateTiles);
-  }
-
-  resetTiles() {
-    // this.setState({ tiles });
   }
 
   renderTiles() {
@@ -63,6 +58,7 @@ class Scrabble extends Component {
             x={index}
             y={rowIndex}
             onDrop={this.updateDroppedTilePosition}
+            key={index}
           />
         );
       })
@@ -85,7 +81,7 @@ class Scrabble extends Component {
 
             <div className="controls">
               <Toggle
-                clickHandler={this.resetTiles}
+                clickHandler={context.resetTiles}
                 text="Reset"
                 icon="refresh"
                 active={true}

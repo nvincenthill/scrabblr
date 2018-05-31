@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from "react";
 import "./App.css";
 import Dictionary from "./Dictionary.json";
-import Scrabble from "./Scrabble.js";
+import GameArea from "./GameArea.js";
+import Sidebar from "./Sidebar.js";
+import Footer from "./Footer";
 
 import moment from "moment";
 import { times } from "lodash";
@@ -23,45 +25,58 @@ class MyProvider extends Component {
       word: "example",
       randomWord: "",
       alphabet: [
-        "a",
-        "b",
-        "c",
-        "d",
-        "e",
-        "f",
-        "g",
-        "h",
-        "i",
-        "j",
-        "k",
-        "l",
-        "m",
-        "n",
-        "o",
-        "p",
-        "q",
-        "r",
-        "s",
-        "t",
-        "u",
-        "v",
-        "w",
-        "x",
-        "y",
-        "z"
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
       ],
       tiles: [
-        { id: 1, letter: "F", points: 4, x: 0, y: 3 },
-        { id: 2, letter: "L", points: 2, x: 1, y: 3 },
-        { id: 3, letter: "I", points: 1, x: 2, y: 3 },
-        { id: 4, letter: "P", points: 2, x: 3, y: 3 },
-        { id: 5, letter: "M", points: 6, x: 4, y: 3 },
-        { id: 6, letter: "O", points: 1, x: 5, y: 3 },
-        { id: 7, letter: "V", points: 8, x: 6, y: 3 },
-        { id: 8, letter: "E", points: 2, x: 7, y: 3 },
-        { id: 9, letter: "E", points: 2, x: 8, y: 3 },
-        { id: 10, letter: "E", points: 2, x: 9, y: 3 }
-      ]
+        { id: 1, letter: "W", points: 4, x: 3, y: 4 },
+        { id: 2, letter: "O", points: 2, x: 4, y: 4 },
+        { id: 3, letter: "R", points: 1, x: 5, y: 4 },
+        { id: 4, letter: "D", points: 2, x: 6, y: 4 },
+        { id: 5, letter: "F", points: 6, x: 2, y: 5 },
+        { id: 6, letter: "L", points: 1, x: 3, y: 5 },
+        { id: 7, letter: "I", points: 8, x: 4, y: 5 },
+        { id: 8, letter: "P", points: 2, x: 5, y: 5 },
+        { id: 9, letter: "P", points: 2, x: 6, y: 5 },
+        { id: 10, letter: "R", points: 2, x: 7, y: 5 }
+      ],
+      startingTiles: [
+        { id: 1, letter: "W", points: 4, x: 3, y: 4 },
+        { id: 2, letter: "O", points: 2, x: 4, y: 4 },
+        { id: 3, letter: "R", points: 1, x: 5, y: 4 },
+        { id: 4, letter: "D", points: 2, x: 6, y: 4 },
+        { id: 5, letter: "F", points: 6, x: 2, y: 5 },
+        { id: 6, letter: "L", points: 1, x: 3, y: 5 },
+        { id: 7, letter: "I", points: 8, x: 4, y: 5 },
+        { id: 8, letter: "P", points: 2, x: 5, y: 5 },
+        { id: 9, letter: "P", points: 2, x: 6, y: 5 },
+        { id: 10, letter: "R", points: 2, x: 7, y: 5 }
+      ],
+    score: 0,
     };
   }
 
@@ -157,7 +172,15 @@ class MyProvider extends Component {
 
   updateTiles = (stateTiles) => {
     this.setState({ tiles: stateTiles });
+  };
+
+  resetTiles = () => {
+    this.setState({ tiles: this.state.startingTiles });
   }
+
+  validateWords = () => {
+    console.log('checking');
+  };
 
   componentWillMount() {
 
@@ -171,7 +194,9 @@ class MyProvider extends Component {
           generateRandomWord: this.generateRandomWord,
           generateMatches: this.generateMatches,
           state: this.state,
-          updateTiles: this.updateTiles
+          updateTiles: this.updateTiles,
+          resetTiles: this.resetTiles,
+          validateWords: this.validateWords
         }}
       >
         {this.props.children}
@@ -188,14 +213,11 @@ class App extends Component {
           {context => (
             <div className="App">
               <header className="App-header">
-                <h1 className="App-title">WordFlippr</h1>
+                <h1 className="App-title">Word Flippr</h1>
               </header>
-              <p className="App-intro">{context.state.randomWord}</p>
-              <button onClick={context.generateRandomWord}>
-                Generate Word
-              </button>
-              <button onClick={context.generateMatches}>Generate Matchs</button>
-              <Scrabble tiles={context.state.tiles} updateTiles={context.updateTiles}/>
+                <GameArea />
+                <Sidebar />
+              <Footer />
             </div>
           )}
         </MyContext.Consumer>
