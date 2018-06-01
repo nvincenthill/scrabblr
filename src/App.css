@@ -9,9 +9,6 @@ html {
   overflow-x: hidden;
   /*font-size: 62.5%;*/
   /*--main-font: "";*/
-  --color1: #222;
-  --color2: #eeeeee;
-  --color3: #f39f41;
 }
 
 /* inherit border-box on all elements in the universe and before and after */
@@ -22,58 +19,104 @@ maintit *:after {
 }
 
 body {
-  background: var(--color2);
+  background: #eee;
 }
 
 .App {
   text-align: center;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 10vmin 70vmin 10vmin;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 15vmin 75vmin 10vmin;
 }
 
 .App-header {
   background-color: #222;
-  /*align-self: center;*/
-  /*padding: 20px;*/
   color: white;
   font-size: 1rem;
-  /*margin-bottom: 2vmax;*/
   grid-column: 1 / span 5;
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /*box-shadow: 5px 5px 0px #333;*/
 }
 
 .App-title {
+  margin: 0;
   align-self: center;
   font-size: 2rem;
+  color: #ffd959;
+  grid-column: 1 / span 2;
 }
 
 .App-intro {
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.scoreboard-wrapper {
+  color: #eee;
+  background: #c19b6c;
+  margin: 2vmax 2vmax;
+  padding: 1vmax;
+  grid-column: span 1;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  box-shadow: 0.5px 0.5px 0 #362817, 1px 1px 0 #362817, 1.5px 1.5px 0 #362817,
+    2px 2px 0 #362817, 2.5px 2.5px 0 #362817, 3px 3px 0 #362817;
+  height: 392px;
 }
 
-.sidebar {
-  grid-column: span 3;
+.scoreboard {
+  color: #eee;
+  background: #222;
+  grid-column: span 1;
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  padding: 0vmax 2vmax 0vmax 2vmax;
+  height: 392px;
+}
+
+
+.score {
+  background: #222;
+  text-align: center;
+  align-self: center;
+  font-size: 2em;
+  grid-column: 1;
+  grid-row: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Permanent Marker", cursive;
+}
+
+.timer {
+  text-align: center;
+  align-self: center;
+  font-size: 2em;
+  grid-column: 2;
+  grid-row: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Permanent Marker", cursive;
+}
+
+.words {
+  font-family: "Permanent Marker", cursive;
+  grid-column: 1 / span 3;
+  grid-row: 2 / span 3;
 }
 
 #scrabble {
   margin: 2vmax 2vmax;
   text-align: center;
+  box-shadow: 0.5px 0.5px 0 #362817, 1px 1px 0 #362817, 1.5px 1.5px 0 #362817,
+    2px 2px 0 #362817, 2.5px 2.5px 0 #362817, 3px 3px 0 #362817;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  grid-column-start: 3;
+      grid-column-end: end;
 }
 
 /*$tile-size:       56px;
@@ -92,21 +135,23 @@ $board-height:    392px;*/
 
 .board-border {
   position: relative;
-  background: grey;
+  background: #c19b6c;
+  /*margin: 1px;*/
   width: 560px;
   height: 392px;
-  padding: 8px;
+  padding: 1vmax;
+  /*box-shadow: 5px 5px 0px #333;*/
 }
 
 .board-square {
   position: relative;
+  background-color: #222;
   width: 56px;
   height: 56px;
-  background: #222;
 }
 
 .dragged-over {
-  background: grey;
+  background: #222;
 }
 
 .tile {
@@ -163,7 +208,6 @@ $board-height:    392px;*/
 .controls {
   position: relative;
   margin: 1rem auto;
-  width: 632px;
   text-align: center;
   margin-bottom: 2vmax;
 }
@@ -172,4 +216,15 @@ $board-height:    392px;*/
   grid-column: 1 / span 5;
   display: grid;
   align-items: center;
+}
+
+button {
+  padding: 1vmax;
+  background: #ffd959;
+  color: #222;
+  border-width: 0;
+  margin: 2vmax 2vmax 2vmax 2vmax;
+  cursor: pointer;
+  box-shadow: 0.5px 0.5px 0 #bda259, 1px 1px 0 #bda259, 1.5px 1.5px 0 #bda259,
+    2px 2px 0 #bda259, 2.5px 2.5px 0 #bda259, 3px 3px 0 #bda259;
 }

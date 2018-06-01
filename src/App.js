@@ -2,16 +2,10 @@ import React, { Component, PropTypes } from "react";
 import "./App.css";
 import Dictionary from "./Dictionary.json";
 import GameArea from "./GameArea.js";
-import Sidebar from "./Sidebar.js";
+import Scoreboard from "./Scoreboard.js";
 import Footer from "./Footer";
+import Header from "./Header";
 
-import moment from "moment";
-import { times } from "lodash";
-import classNames from "classnames";
-import HTML5Backend from "react-dnd-html5-backend";
-import { DragSource, DropTarget, DragDropContext } from "react-dnd";
-import FlipMove from "react-flip-move";
-import Toggle from "./Toggle.js";
 import helpers from "./helpers.js";
 
 // first we will make a new context
@@ -23,6 +17,7 @@ class MyProvider extends Component {
     super(props);
     this.state = {
       word: "example",
+      title: "NICK'S WORD FLIPPR",
       randomWord: "",
       alphabet: [
         "A",
@@ -53,30 +48,59 @@ class MyProvider extends Component {
         "Z"
       ],
       tiles: [
-        { id: 1, letter: "W", points: 4, x: 3, y: 4 },
-        { id: 2, letter: "O", points: 2, x: 4, y: 4 },
-        { id: 3, letter: "R", points: 1, x: 5, y: 4 },
-        { id: 4, letter: "D", points: 2, x: 6, y: 4 },
-        { id: 5, letter: "F", points: 6, x: 2, y: 5 },
-        { id: 6, letter: "L", points: 1, x: 3, y: 5 },
-        { id: 7, letter: "I", points: 8, x: 4, y: 5 },
-        { id: 8, letter: "P", points: 2, x: 5, y: 5 },
-        { id: 9, letter: "P", points: 2, x: 6, y: 5 },
-        { id: 10, letter: "R", points: 2, x: 7, y: 5 }
+        { id: 1, letter: "W", x: 3, y: 4 },
+        { id: 2, letter: "O", x: 4, y: 4 },
+        { id: 3, letter: "R", x: 5, y: 4 },
+        { id: 4, letter: "D", x: 6, y: 4 },
+        { id: 5, letter: "F", x: 2, y: 5 },
+        { id: 6, letter: "L", x: 3, y: 5 },
+        { id: 7, letter: "I", x: 4, y: 5 },
+        { id: 8, letter: "P", x: 5, y: 5 },
+        { id: 9, letter: "P", x: 6, y: 5 },
+        { id: 10, letter: "R", x: 7, y: 5 }
       ],
       startingTiles: [
-        { id: 1, letter: "W", points: 4, x: 3, y: 4 },
-        { id: 2, letter: "O", points: 2, x: 4, y: 4 },
-        { id: 3, letter: "R", points: 1, x: 5, y: 4 },
-        { id: 4, letter: "D", points: 2, x: 6, y: 4 },
-        { id: 5, letter: "F", points: 6, x: 2, y: 5 },
-        { id: 6, letter: "L", points: 1, x: 3, y: 5 },
-        { id: 7, letter: "I", points: 8, x: 4, y: 5 },
-        { id: 8, letter: "P", points: 2, x: 5, y: 5 },
-        { id: 9, letter: "P", points: 2, x: 6, y: 5 },
-        { id: 10, letter: "R", points: 2, x: 7, y: 5 }
+        { id: 1, letter: "W", x: 3, y: 4 },
+        { id: 2, letter: "O", x: 4, y: 4 },
+        { id: 3, letter: "R", x: 5, y: 4 },
+        { id: 4, letter: "D", x: 6, y: 4 },
+        { id: 5, letter: "F", x: 2, y: 5 },
+        { id: 6, letter: "L", x: 3, y: 5 },
+        { id: 7, letter: "I", x: 4, y: 5 },
+        { id: 8, letter: "P", x: 5, y: 5 },
+        { id: 9, letter: "P", x: 6, y: 5 },
+        { id: 10, letter: "R", x: 7, y: 5 }
       ],
-    score: 0,
+      score: 0,
+      timer: "00:00",
+      scoreHash: {
+        a: { points: 1, weight: 9 },
+        b: { points: 3, weight: 2 },
+        c: { points: 3, weight: 2 },
+        d: { points: 2, weight: 4 },
+        e: { points: 1, weight: 12 },
+        f: { points: 4, weight: 2 },
+        g: { points: 2, weight: 3 },
+        h: { points: 4, weight: 2 },
+        i: { points: 1, weight: 9 },
+        j: { points: 8, weight: 1 },
+        k: { points: 5, weight: 1 },
+        l: { points: 1, weight: 4 },
+        m: { points: 3, weight: 2 },
+        n: { points: 1, weight: 6 },
+        o: { points: 1, weight: 8 },
+        p: { points: 3, weight: 2 },
+        q: { points: 10, weight: 1 },
+        r: { points: 1, weight: 6 },
+        s: { points: 1, weight: 4 },
+        t: { points: 1, weight: 6 },
+        u: { points: 1, weight: 4 },
+        v: { points: 4, weight: 2 },
+        w: { points: 4, weight: 2 },
+        x: { points: 8, weight: 1 },
+        y: { points: 4, weight: 2 },
+        z: { points: 10, weight: 1 }
+      }
     };
   }
 
@@ -84,11 +108,11 @@ class MyProvider extends Component {
   getRandomWord = (arr, n) => {
     let randomWord = [];
     for (let i = 0; i < n; i++) {
-      let randomLetter = this.shuffleArray(arr)[0]
+      let randomLetter = this.shuffleArray(arr)[0];
       randomWord.push(randomLetter);
       let temp = this.state.tiles;
-      temp[i].letter = randomLetter; 
-      this.setState({tiles: temp})
+      temp[i].letter = randomLetter;
+      this.setState({ tiles: temp });
     }
     randomWord = randomWord.join("");
     return randomWord;
@@ -100,14 +124,16 @@ class MyProvider extends Component {
   };
 
   generateMatches = () => {
-    let allPosible = this.permute__of_all_size(this.state.randomWord);
+    let allPosible = this.permute__of_all_size(
+      this.state.randomWord.toLowerCase()
+    );
     let result = [];
     for (let i = 0; i < allPosible.length; i++) {
       if (Dictionary.hasOwnProperty(allPosible[i])) {
         result.push(allPosible[i]);
       }
     }
-    result = result.reverse();
+    result = result.sort((a, b) => b.length - a.length);
     console.log(result);
     return result;
   };
@@ -170,21 +196,19 @@ class MyProvider extends Component {
     return res;
   };
 
-  updateTiles = (stateTiles) => {
+  updateTiles = stateTiles => {
     this.setState({ tiles: stateTiles });
   };
 
   resetTiles = () => {
     this.setState({ tiles: this.state.startingTiles });
-  }
-
-  validateWords = () => {
-    console.log('checking');
   };
 
-  componentWillMount() {
+  validateWords = () => {
+    console.log("checking");
+  };
 
-  }
+  componentWillMount() {}
 
   render() {
     return (
@@ -212,11 +236,9 @@ class App extends Component {
         <MyContext.Consumer>
           {context => (
             <div className="App">
-              <header className="App-header">
-                <h1 className="App-title">Word Flippr</h1>
-              </header>
-                <GameArea />
-                <Sidebar />
+              <Header />
+              <GameArea />
+              <Scoreboard />
               <Footer />
             </div>
           )}

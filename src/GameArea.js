@@ -15,6 +15,7 @@ class GameArea extends React.Component {
             <Scrabble
               tiles={context.state.tiles}
               updateTiles={context.updateTiles}
+              scoreHash={context.state.scoreHash}
             />
           </div>
         )}

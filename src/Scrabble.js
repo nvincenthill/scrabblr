@@ -34,14 +34,14 @@ class Scrabble extends Component {
 
     // Set it to a new copy of the tile, but with the new coords
     stateTiles[index] = { ...tile, x, y };
-
+    console.log(stateTiles);
     this.props.updateTiles(stateTiles);
   }
 
   renderTiles() {
     return this.props.tiles.map((tile, index) => {
       return (
-        <Tile key={index} onDrop={this.updateDroppedTilePosition} {...tile} />
+        <Tile key={index} onDrop={this.updateDroppedTilePosition} scoreHash={this.props.scoreHash}{...tile} />
       );
     });
   }
@@ -50,7 +50,7 @@ class Scrabble extends Component {
     // Create a 2D array to represent the board
     // Array#matrix is a monkeypatched, custom method >:)
     const matrix = Array.matrix(BOARD_WIDTH, BOARD_HEIGHT);
-
+    console.log(matrix);
     return matrix.map((row, rowIndex) =>
       row.map(index => {
         return (
@@ -77,16 +77,6 @@ class Scrabble extends Component {
                 </FlipMove>
                 {this.renderBoardSquares()}
               </div>
-            </div>
-
-            <div className="controls">
-              <Toggle
-                clickHandler={context.resetTiles}
-                text="Reset"
-                icon="refresh"
-                active={true}
-                large={true}
-              />
             </div>
           </div>
         )}
@@ -120,22 +110,12 @@ const tileTarget = {
   isDragging: monitor.isDragging()
 }))
 class Tile extends Component {
-  static propTypes = {
-    // x: PropTypes.number.isRequired,
-    // y: PropTypes.number.isRequired,
-    // letter: PropTypes.string.isRequired,
-    // points: PropTypes.number.isRequired,
-    // connectDragSource: PropTypes.func.isRequired,
-    // isDragging: PropTypes.bool.isRequired
-  };
-
   render() {
     const {
       connectDropTarget,
       connectDragSource,
       isDragging,
       letter,
-      points,
       x,
       y
     } = this.props;
@@ -151,7 +131,7 @@ class Tile extends Component {
       connectDragSource(
         <div className="tile" style={styles}>
           <span className="tile-letter">{letter}</span>
-          <span className="tile-points">{points}</span>
+          <span className="tile-points">{this.props.scoreHash[letter.toLowerCase()].points ? this.props.scoreHash[letter.toLowerCase()].points : 0}</span>
         </div>
       )
     );
