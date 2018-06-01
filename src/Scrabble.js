@@ -50,7 +50,6 @@ class Scrabble extends Component {
     // Create a 2D array to represent the board
     // Array#matrix is a monkeypatched, custom method >:)
     const matrix = Array.matrix(BOARD_WIDTH, BOARD_HEIGHT);
-    console.log(matrix);
     return matrix.map((row, rowIndex) =>
       row.map(index => {
         return (

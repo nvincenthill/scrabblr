@@ -11,18 +11,17 @@ class Scoreboard extends React.Component {
       <MyContext.Consumer>
         {context => (
           <div className="scoreboard-wrapper">
-          <div className="scoreboard">
-            <h2 className="score">Score : {context.state.score}</h2>
-            <h2 className="timer">Time : {context.state.timer}</h2>
-            <p className="words">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-              nemo, ex quisquam voluptatum, molestiae maiores architecto. Ea,
-              cumque, est. Suscipit architecto pariatur facere repellendus
-              dolore nisi odit, atque est ex. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-              nemo, ex quisquam voluptatum, molestiae maiores architecto. Ea,
-              cumque, est. Suscipit architecto pariatur facere repellendus
-              dolore nisi odit, atque est ex. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-            </p>
+            <div className="scoreboard">
+              <h2 className="score">Score : {context.state.score}</h2>
+              <h2 className="timer">Time : {context.state.time}</h2>
+
+              <p className="scoreboard-instructions">
+                This will be a brief summary of the main gameloop,
+                instructions/directions, in a cute branded message!
+              </p>
+              <button className="scoreboard-start-button" onClick={context.startGameloop}>
+                START
+              </button>
             </div>
           </div>
         )}

@@ -17,6 +17,7 @@ class MyProvider extends Component {
     super(props);
     this.state = {
       word: "example",
+      inGameLoop: false,
       title: "NICK'S WORD FLIPPR",
       randomWord: "",
       alphabet: [
@@ -72,7 +73,8 @@ class MyProvider extends Component {
         { id: 10, letter: "R", x: 7, y: 5 }
       ],
       score: 0,
-      timer: "00:00",
+      time: 10,
+      timer: null,
       scoreHash: {
         a: { points: 1, weight: 9 },
         b: { points: 3, weight: 2 },
@@ -143,6 +145,36 @@ class MyProvider extends Component {
     this.setState({ randomWord: data });
   };
 
+  //start timer
+  startTimer = () => {
+    let timer = setInterval(this.tick, 1000);
+    this.setState({timer});
+  };
+
+  //tick timer
+  tick = () => {
+
+    this.setState({
+      time: this.state.time - 1
+    });
+    if (this.state.time === 0) {
+      this.endGameLoop();
+      clearInterval(this.state.timer);
+    }
+  };
+
+  //start gameloop
+  startGameLoop = () => {
+    this.startTimer();
+    this.generateRandomWord();
+  };
+
+  //start gameloop
+  endGameLoop = () => {
+    alert(`You scored ${this.state.score}`)
+  };
+
+
   //Durstenfeld shuffle
   shuffleArray = array => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -208,7 +240,9 @@ class MyProvider extends Component {
     console.log("checking");
   };
 
-  componentWillMount() {}
+  componentWillMount() {
+
+  }
 
   render() {
     return (
@@ -220,7 +254,8 @@ class MyProvider extends Component {
           state: this.state,
           updateTiles: this.updateTiles,
           resetTiles: this.resetTiles,
-          validateWords: this.validateWords
+          validateWords: this.validateWords,
+          startGameloop: this.startGameLoop,
         }}
       >
         {this.props.children}
