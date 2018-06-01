@@ -18,7 +18,7 @@ class MyProvider extends Component {
     this.state = {
       word: "example",
       inGameLoop: false,
-      title: "NICK'S WORD FLIPPR",
+      title: "SCRABBLR",
       randomWord: "",
       alphabet: [
         "A",

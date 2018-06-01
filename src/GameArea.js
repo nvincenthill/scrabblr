@@ -12,6 +12,7 @@ class GameArea extends React.Component {
       <MyContext.Consumer>
         {context => (
           <div>
+          
             <Scrabble
               tiles={context.state.tiles}
               updateTiles={context.updateTiles}
