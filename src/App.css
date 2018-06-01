@@ -34,17 +34,21 @@ body {
   color: white;
   font-size: 1rem;
   grid-column: 1 / span 5;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  align-items: center;
   /*box-shadow: 5px 5px 0px #333;*/
 }
 
 .App-title {
-  margin: 0;
+  margin: 2vmax 2vmax;
+  padding: 0vmax 1vmax;
   align-self: center;
-  font-size: 2.5rem;
-  color: #ffd959;
-  grid-column: 1 / span 2;
+  font-size: 3rem;
+  color: #222;
+  letter-spacing: 10px;
+  background: #ffd959;
+  box-shadow: 0.5px 0.5px 0 #bda259, 1px 1px 0 #bda259, 1.5px 1.5px 0 #bda259,
+    2px 2px 0 #bda259, 2.5px 2.5px 0 #bda259, 3px 3px 0 #bda259;
 }
 
 .App-intro {
@@ -103,7 +107,7 @@ body {
   grid-row: 3;
   font-family: "Permanent Marker", cursive;
   padding: 1vmax;
-  background: #222;
+  background: none;
   color: #eee;
   border-width: 0;
   font-weight: bold;
@@ -121,8 +125,8 @@ body {
 }
 
 .fake-ad {
+  grid-column: 2;
   justify-content: center;
-  align-items: center;
   display: flex;
   vertical-align: middle;
   align-self: center;
@@ -130,11 +134,16 @@ body {
   margin-right: 2vmax;
   grid-column-start: 3;
   grid-column-end: end;
-  width: 530px;
-  height: 70px;
+  /*margin: 0vmax 2vmax;*/
   background: white;
   font-weight: bold;
   color: #222;
+  margin: 2vmax 2vmax;
+  padding: 0vmax 2vmax;
+  font-size: 3rem;
+  color: #222;
+  letter-spacing: 10px;
+  display: none;
 }
 
 #scrabble {

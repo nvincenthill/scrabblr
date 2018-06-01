@@ -19,9 +19,10 @@ class Scoreboard extends React.Component {
                 This will be a brief summary of the main gameloop,
                 instructions/directions, in a cute branded message!
               </p>
-              <button className="scoreboard-start-button" onClick={context.startGameloop}>
+              {!context.state.inGameLoop ? <button className="scoreboard-start-button" onClick={context.startGameloop}>
                 START
-              </button>
+              </button> : null}
+              
             </div>
           </div>
         )}

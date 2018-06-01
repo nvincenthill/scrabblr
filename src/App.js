@@ -48,29 +48,30 @@ class MyProvider extends Component {
         "Y",
         "Z"
       ],
+      startingBlock: ["C", "O", "D", "E", "B", "E", "T", "T", "E", "R"],
       tiles: [
-        { id: 1, letter: "W", x: 3, y: 4 },
-        { id: 2, letter: "O", x: 4, y: 4 },
-        { id: 3, letter: "R", x: 5, y: 4 },
-        { id: 4, letter: "D", x: 6, y: 4 },
-        { id: 5, letter: "F", x: 2, y: 5 },
-        { id: 6, letter: "L", x: 3, y: 5 },
-        { id: 7, letter: "I", x: 4, y: 5 },
-        { id: 8, letter: "P", x: 5, y: 5 },
-        { id: 9, letter: "P", x: 6, y: 5 },
-        { id: 10, letter: "R", x: 7, y: 5 }
+        { id: 1, letter: "C", x: 3, y: 2 },
+        { id: 2, letter: "O", x: 4, y: 2 },
+        { id: 3, letter: "D", x: 5, y: 2 },
+        { id: 4, letter: "E", x: 6, y: 2 },
+        { id: 5, letter: "B", x: 2, y: 3 },
+        { id: 6, letter: "E", x: 3, y: 3 },
+        { id: 7, letter: "T", x: 4, y: 3 },
+        { id: 8, letter: "T", x: 5, y: 3 },
+        { id: 9, letter: "E", x: 6, y: 3 },
+        { id: 10, letter: "R", x: 7, y: 3 }
       ],
       startingTiles: [
-        { id: 1, letter: "W", x: 3, y: 4 },
-        { id: 2, letter: "O", x: 4, y: 4 },
-        { id: 3, letter: "R", x: 5, y: 4 },
-        { id: 4, letter: "D", x: 6, y: 4 },
-        { id: 5, letter: "F", x: 2, y: 5 },
-        { id: 6, letter: "L", x: 3, y: 5 },
-        { id: 7, letter: "I", x: 4, y: 5 },
-        { id: 8, letter: "P", x: 5, y: 5 },
-        { id: 9, letter: "P", x: 6, y: 5 },
-        { id: 10, letter: "R", x: 7, y: 5 }
+        { id: 1, letter: "C", x: 3, y: 2 },
+        { id: 2, letter: "O", x: 4, y: 2 },
+        { id: 3, letter: "D", x: 5, y: 2 },
+        { id: 4, letter: "E", x: 6, y: 2 },
+        { id: 5, letter: "B", x: 2, y: 3 },
+        { id: 6, letter: "E", x: 3, y: 3 },
+        { id: 7, letter: "T", x: 4, y: 3 },
+        { id: 8, letter: "T", x: 5, y: 3 },
+        { id: 9, letter: "E", x: 6, y: 3 },
+        { id: 10, letter: "R", x: 7, y: 3 }
       ],
       score: 0,
       time: 10,
@@ -120,6 +121,17 @@ class MyProvider extends Component {
     return randomWord;
   };
 
+  // set tiles at starting position
+  resetTilePositions = () => {
+    for (let i = 0; i < this.state.tiles.length; i++) {
+      let temp = this.state.tiles;
+      temp[i].x = 0 + i;
+      temp[i].y = 6;
+      this.setState({ tiles: temp });
+    };
+  };
+
+  //
   generateRandomWord = () => {
     let word = this.getRandomWord(this.state.alphabet, 10);
     this.save(word);
@@ -148,12 +160,11 @@ class MyProvider extends Component {
   //start timer
   startTimer = () => {
     let timer = setInterval(this.tick, 1000);
-    this.setState({timer});
+    this.setState({ timer });
   };
 
   //tick timer
   tick = () => {
-
     this.setState({
       time: this.state.time - 1
     });
@@ -167,13 +178,14 @@ class MyProvider extends Component {
   startGameLoop = () => {
     this.startTimer();
     this.generateRandomWord();
+    this.resetTilePositions();
+    this.setState({ inGameLoop: true });
   };
 
   //start gameloop
   endGameLoop = () => {
-    alert(`You scored ${this.state.score}`)
+    alert(`You scored ${this.state.score}`);
   };
-
 
   //Durstenfeld shuffle
   shuffleArray = array => {
@@ -240,9 +252,7 @@ class MyProvider extends Component {
     console.log("checking");
   };
 
-  componentWillMount() {
-
-  }
+  componentWillMount() {}
 
   render() {
     return (
@@ -255,7 +265,7 @@ class MyProvider extends Component {
           updateTiles: this.updateTiles,
           resetTiles: this.resetTiles,
           validateWords: this.validateWords,
-          startGameloop: this.startGameLoop,
+          startGameloop: this.startGameLoop
         }}
       >
         {this.props.children}
