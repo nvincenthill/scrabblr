@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import Dictionary from "./Dictionary.json";
 import GameArea from "./GameArea.js";
 import Scoreboard from "./Scoreboard.js";
