@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from "react";
+import React from "react";
 import "./App.css";
 import Dictionary from "./Dictionary.json";
 import GameArea from "./GameArea.js";
@@ -6,13 +6,11 @@ import Scoreboard from "./Scoreboard.js";
 import Footer from "./Footer";
 import Header from "./Header";
 
-import helpers from "./helpers.js";
-
 // first we will make a new context
 const MyContext = React.createContext();
 
 // Then create a provider Component
-class MyProvider extends Component {
+class MyProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -182,9 +180,19 @@ class MyProvider extends Component {
     this.setState({ inGameLoop: true });
   };
 
-  //start gameloop
+  //end gameloop
   endGameLoop = () => {
     alert(`You scored ${this.state.score}`);
+  };
+
+  //check if word is a valid english word
+  validateWord = () => {
+    console.log("Validating Word");
+  };
+
+  //check for words in matrix
+  checkForWords = () => {
+    console.log("Checking for words");
   };
 
   //Durstenfeld shuffle
@@ -248,10 +256,6 @@ class MyProvider extends Component {
     this.setState({ tiles: this.state.startingTiles });
   };
 
-  validateWords = () => {
-    console.log("checking");
-  };
-
   componentWillMount() {}
 
   render() {
@@ -264,7 +268,7 @@ class MyProvider extends Component {
           state: this.state,
           updateTiles: this.updateTiles,
           resetTiles: this.resetTiles,
-          validateWords: this.validateWords,
+          validateWord: this.validateWord,
           startGameloop: this.startGameLoop
         }}
       >
@@ -274,7 +278,7 @@ class MyProvider extends Component {
   }
 }
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <MyProvider>

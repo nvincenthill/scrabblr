@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from "react";
+import React from "react";
 import classNames from "classnames";
 
 const Toggle = ({ clickHandler, text, icon, active, large }) => {

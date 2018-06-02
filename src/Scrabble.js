@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from "react";
+import React from "react";
 import moment from "moment";
 import { times } from "lodash";
 import classNames from "classnames";
@@ -13,10 +13,9 @@ const BOARD_WIDTH = 10;
 const BOARD_HEIGHT = 7;
 const SQUARE_SIZE = 56;
 const TILE_OFFSET = 3;
-const NUM_SQUARES = BOARD_WIDTH * BOARD_HEIGHT;
 
 @DragDropContext(HTML5Backend)
-class Scrabble extends Component {
+class Scrabble extends React.Component {
   constructor() {
     super();
 
@@ -31,10 +30,9 @@ class Scrabble extends Component {
     // Create a copy of the state, find the newly-dropped tile.
     let stateTiles = this.props.tiles.slice();
     const index = stateTiles.findIndex(stateTile => stateTile.id === tile.id);
-
+    console.log(this.props.tiles)
     // Set it to a new copy of the tile, but with the new coords
     stateTiles[index] = { ...tile, x, y };
-    console.log(stateTiles);
     this.props.updateTiles(stateTiles);
   }
 
@@ -108,7 +106,7 @@ const tileTarget = {
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging()
 }))
-class Tile extends Component {
+class Tile extends React.Component {
   render() {
     const {
       connectDropTarget,
@@ -147,7 +145,7 @@ const squareTarget = {
   connectDropTarget: connect.dropTarget(),
   isOver: monitor.isOver()
 }))
-class BoardSquare extends Component {
+class BoardSquare extends React.Component {
   renderSquare() {
     const classes = classNames({
       "board-square": true,
