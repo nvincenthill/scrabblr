@@ -10,7 +10,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 
 //external components
-import GithubCorner from 'react-github-corner';
+import GithubCorner from "react-github-corner";
 
 // Make a new context
 const MyContext = React.createContext();
@@ -54,28 +54,28 @@ class MyProvider extends React.Component {
       ],
       startingBlock: ["C", "O", "D", "E", "B", "E", "T", "T", "E", "R"],
       tiles: [
-        { id: 1, letter: "C", x: 3, y: 2 },
-        { id: 2, letter: "O", x: 4, y: 2 },
-        { id: 3, letter: "D", x: 5, y: 2 },
-        { id: 4, letter: "E", x: 6, y: 2 },
-        { id: 5, letter: "B", x: 2, y: 3 },
-        { id: 6, letter: "E", x: 3, y: 3 },
-        { id: 7, letter: "T", x: 4, y: 3 },
-        { id: 8, letter: "T", x: 5, y: 3 },
-        { id: 9, letter: "E", x: 6, y: 3 },
-        { id: 10, letter: "R", x: 7, y: 3 }
+        { id: 1, letter: "C", x: 3, y: 2, class: "tile" },
+        { id: 2, letter: "O", x: 4, y: 2, class: "tile" },
+        { id: 3, letter: "D", x: 5, y: 2, class: "tile" },
+        { id: 4, letter: "E", x: 6, y: 2, class: "tile" },
+        { id: 5, letter: "B", x: 2, y: 3, class: "tile" },
+        { id: 6, letter: "E", x: 3, y: 3, class: "tile" },
+        { id: 7, letter: "T", x: 4, y: 3, class: "tile" },
+        { id: 8, letter: "T", x: 5, y: 3, class: "tile" },
+        { id: 9, letter: "E", x: 6, y: 3, class: "tile" },
+        { id: 10, letter: "R", x: 7, y: 3, class: "tile" }
       ],
       startingTiles: [
-        { id: 1, letter: "C", x: 3, y: 2 },
-        { id: 2, letter: "O", x: 4, y: 2 },
-        { id: 3, letter: "D", x: 5, y: 2 },
-        { id: 4, letter: "E", x: 6, y: 2 },
-        { id: 5, letter: "B", x: 2, y: 3 },
-        { id: 6, letter: "E", x: 3, y: 3 },
-        { id: 7, letter: "T", x: 4, y: 3 },
-        { id: 8, letter: "T", x: 5, y: 3 },
-        { id: 9, letter: "E", x: 6, y: 3 },
-        { id: 10, letter: "R", x: 7, y: 3 }
+        { id: 1, letter: "C", x: 3, y: 2, class: "tile" },
+        { id: 2, letter: "O", x: 4, y: 2, class: "tile" },
+        { id: 3, letter: "D", x: 5, y: 2, class: "tile" },
+        { id: 4, letter: "E", x: 6, y: 2, class: "tile" },
+        { id: 5, letter: "B", x: 2, y: 3, class: "tile" },
+        { id: 6, letter: "E", x: 3, y: 3, class: "tile" },
+        { id: 7, letter: "T", x: 4, y: 3, class: "tile" },
+        { id: 8, letter: "T", x: 5, y: 3, class: "tile" },
+        { id: 9, letter: "E", x: 6, y: 3, class: "tile" },
+        { id: 10, letter: "R", x: 7, y: 3, class: "tile" }
       ],
       score: 0,
       time: 10,
@@ -294,13 +294,18 @@ class App extends React.Component {
         <MyContext.Consumer>
           {context => (
             <React.Fragment>
-            <GithubCorner href="https://github.com/nvincenthill/word-flipper" octoColor="#222" bannerColor="#ffd959" className="corner" />
-            <div className="App">
-              <Header />
-              <GameArea />
-              <Scoreboard />
-              <Footer />
-            </div>
+              <GithubCorner
+                href="https://github.com/nvincenthill/word-flipper"
+                octoColor="#222"
+                bannerColor="#ffd959"
+                className="corner"
+              />
+              <div className="App">
+                <Header />
+                <GameArea />
+                <Scoreboard />
+                <Footer />
+              </div>
             </React.Fragment>
           )}
         </MyContext.Consumer>

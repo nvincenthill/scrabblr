@@ -20,6 +20,9 @@ maintit *:after {
 
 body {
   background: #eee;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
 }
 
 .App {
@@ -63,7 +66,7 @@ body {
   grid-column: span 1;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
-/*  box-shadow: 0.5px 0.5px 0 #362817, 1px 1px 0 #362817, 1.5px 1.5px 0 #362817,
+  /*  box-shadow: 0.5px 0.5px 0 #362817, 1px 1px 0 #362817, 1.5px 1.5px 0 #362817,
     2px 2px 0 #362817, 2.5px 2.5px 0 #362817, 3px 3px 0 #362817;*/
   height: 392px;
 }
@@ -149,7 +152,7 @@ body {
 #scrabble {
   margin: 2vmax 2vmax;
   text-align: center;
-/*  box-shadow: 0.5px 0.5px 0 #362817, 1px 1px 0 #362817, 1.5px 1.5px 0 #362817,
+  /*  box-shadow: 0.5px 0.5px 0 #362817, 1px 1px 0 #362817, 1.5px 1.5px 0 #362817,
     2px 2px 0 #362817, 2.5px 2.5px 0 #362817, 3px 3px 0 #362817;*/
 }
 
@@ -192,7 +195,7 @@ $board-height:    392px;*/
 }
 
 .dragged-over {
-  background: #222;
+  background: #111;
 }
 
 .tile {
