@@ -15,6 +15,7 @@
     "react-dnd-html5-backend": "^3.0.2",
     "react-dom": "^16.4.0",
     "react-flip-move": "^3.0.2",
+    "react-github-corner": "^2.3.0",
     "react-scripts": "1.1.4"
   },
   "scripts": {

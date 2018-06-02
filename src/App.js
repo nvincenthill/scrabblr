@@ -1,9 +1,16 @@
 import React from "react";
+
+//data
 import Dictionary from "./Dictionary.json";
+
+//internal components
 import GameArea from "./GameArea.js";
 import Scoreboard from "./Scoreboard.js";
 import Footer from "./Footer";
 import Header from "./Header";
+
+//external components
+import GithubCorner from 'react-github-corner';
 
 // Make a new context
 const MyContext = React.createContext();
@@ -286,12 +293,15 @@ class App extends React.Component {
       <MyProvider>
         <MyContext.Consumer>
           {context => (
+            <React.Fragment>
+            <GithubCorner href="https://github.com/nvincenthill/word-flipper" octoColor="#222" bannerColor="#ffd959" className="corner" />
             <div className="App">
               <Header />
               <GameArea />
               <Scoreboard />
               <Footer />
             </div>
+            </React.Fragment>
           )}
         </MyContext.Consumer>
       </MyProvider>
