@@ -5,7 +5,7 @@ import Scoreboard from "./Scoreboard.js";
 import Footer from "./Footer";
 import Header from "./Header";
 
-// first we will make a new context
+// Make a new context
 const MyContext = React.createContext();
 
 // Then create a provider Component
@@ -125,7 +125,7 @@ class MyProvider extends React.Component {
       temp[i].x = 0 + i;
       temp[i].y = 6;
       this.setState({ tiles: temp });
-    };
+    }
   };
 
   //
@@ -134,6 +134,7 @@ class MyProvider extends React.Component {
     this.save(word);
   };
 
+  //find all valid English words for a string of characters
   generateMatches = () => {
     let allPosible = this.permute__of_all_size(
       this.state.randomWord.toLowerCase()
@@ -247,8 +248,10 @@ class MyProvider extends React.Component {
     return res;
   };
 
+  // update tile position
   updateTiles = stateTiles => {
     this.setState({ tiles: stateTiles });
+    console.log(this.state.tiles);
   };
 
   resetTiles = () => {

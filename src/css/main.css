@@ -208,6 +208,10 @@ $board-height:    392px;*/
     2px 2px 0 #bda259, 2.5px 2.5px 0 #bda259, 3px 3px 0 #bda259;
 }
 
+.tile:hover {
+  /*background: red;*/
+}
+
 .is-dragging {
   opacity: 0.7;
 }

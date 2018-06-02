@@ -10,11 +10,14 @@ class Footer extends React.Component {
     return (
       <MyContext.Consumer>
         {context => (
-            <div className="footer">
-              <p id="footer-name">
-                 Copyright © 2018 <a href="http://nvincenthill.herokuapp.com/">Nicholas Vincent-Hill</a>
-              </p>
-            </div>
+          <div className="footer">
+            <p id="footer-name" className="animated fadeInUp">
+              Copyright © 2018{" "}
+              <a href="http://nvincenthill.herokuapp.com/">
+                Nicholas Vincent-Hill
+              </a>
+            </p>
+          </div>
         )}
       </MyContext.Consumer>
     );

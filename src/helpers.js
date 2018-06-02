@@ -1,3 +1,4 @@
+//some helper functions
 
 /**
  * Array.prototype.swap

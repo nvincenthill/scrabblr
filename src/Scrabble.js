@@ -30,7 +30,6 @@ class Scrabble extends React.Component {
     // Create a copy of the state, find the newly-dropped tile.
     let stateTiles = this.props.tiles.slice();
     const index = stateTiles.findIndex(stateTile => stateTile.id === tile.id);
-    console.log(this.props.tiles)
     // Set it to a new copy of the tile, but with the new coords
     stateTiles[index] = { ...tile, x, y };
     this.props.updateTiles(stateTiles);
@@ -126,7 +125,7 @@ class Tile extends React.Component {
 
     return connectDropTarget(
       connectDragSource(
-        <div className="tile" style={styles}>
+        <div className="tile animated fadeInDown" style={styles}>
           <span className="tile-letter">{letter}</span>
           <span className="tile-points">{this.props.scoreHash[letter.toLowerCase()].points ? this.props.scoreHash[letter.toLowerCase()].points : 0}</span>
         </div>
