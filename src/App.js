@@ -76,6 +76,7 @@ class MyProvider extends React.Component {
       score: 0,
       time: 10,
       matches: [],
+      foundWords: [],
       timer: null,
       wordsToCheck: [],
       scoreHash: {
@@ -182,6 +183,7 @@ class MyProvider extends React.Component {
     this.generateRandomWord();
     this.resetTilePositions();
     this.setState({ isInGameLoop: true });
+    this.playSound("shuffle");
   };
 
   //end gameloop
@@ -190,20 +192,73 @@ class MyProvider extends React.Component {
   };
 
   //check if word is a valid english word
-  validateWord = () => {
-    console.log(`Validating ${this.state.wordsToCheck}`);
-    this.handleValidityCheck(true);
+  validateWord = word => {
+    console.log(`Validating ${word}`);
+    let result = false;
+
+    if (Dictionary.hasOwnProperty(word)) {
+      result = true;
+    }
+
+    this.handleValidityCheck(result, word);
   };
 
   //check if word is a valid english word
-  handleValidityCheck = isValid => {
+  handleValidityCheck = (isValid, word) => {
     console.log(`The word is ${isValid ? "valid" : "invalid"}`);
+    if (isValid && !this.state.foundWords.includes(word)) {
+      this.scoreWord(word);
+      this.addWordToFoundWords(word);
+      this.playSound("shuffle");
+      this.resetTilePositions();
+    }
+  };
+
+  //add score of word to total score
+  incrementScore = scoreOfWord => {
+    let newScore = this.state.score + scoreOfWord;
+    this.setState({ score: newScore });
+  };
+
+  // add a word to FoundWords
+  addWordToFoundWords = word => {
+    let newFoundWords = this.state.foundWords;
+    newFoundWords.push(word);
+    this.setState({ foundWords: newFoundWords });
+  };
+
+  //score word
+  scoreWord = word => {
+    let letters = word.split("");
+    let result = 0;
+    for (let i = 0; i < letters.length; i++) {
+      result += this.state.scoreHash[letters[i]].points;
+    }
+    this.incrementScore(result);
   };
 
   //check for words in matrix
   checkForWords = () => {
-    console.log(`Checking tiles for words`);
-    console.log(this.state.tiles);
+    let capturedTiles = [];
+    let tiles = this.state.tiles;
+    for (let i = 0; i < tiles.length; i++) {
+      if (tiles[i].y === 3) {
+        capturedTiles.push(tiles[i]);
+      }
+    }
+
+    let result = "";
+
+    //TODO handle spaces on submission line
+
+    // sort by x position in matrix
+    capturedTiles.sort((a, b) => {
+      return a.x > b.x ? 1 : b.x > a.x ? -1 : 0;
+    });
+    for (let j = 0; j < capturedTiles.length; j++) {
+      result += capturedTiles[j].letter.toLowerCase();
+    }
+    this.validateWord(result);
   };
 
   //Durstenfeld shuffle
@@ -262,21 +317,17 @@ class MyProvider extends React.Component {
   // update tile position
   updateTiles = stateTiles => {
     this.setState({ tiles: stateTiles });
-    console.log(this.state.tiles);
-    this.playClick();
+    this.playSound("click");
   };
 
   // play a click sound
-  playClick = () => {
-    var audio = new Audio("click.mp3");
+  playSound = sound => {
+    var audio = new Audio(`${sound}.mp3`);
     let playPromise = audio.play();
 
-    playPromise
-      .then(function() {
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    playPromise.then(function() {}).catch(function(error) {
+      console.log(error);
+    });
   };
 
   resetTiles = () => {
