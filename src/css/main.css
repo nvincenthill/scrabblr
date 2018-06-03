@@ -45,10 +45,11 @@ body {
 .App-title {
   margin: 2vmax 2vmax;
   padding: 0vmax 1vmax;
+  line-height: 3.75rem;
   align-self: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #222;
-  letter-spacing: 10px;
+  letter-spacing: 1rem;
   background: #ffd959;
   box-shadow: 0.5px 0.5px 0 #bda259, 1px 1px 0 #bda259, 1.5px 1.5px 0 #bda259,
     2px 2px 0 #bda259, 2.5px 2.5px 0 #bda259, 3px 3px 0 #bda259;
@@ -146,7 +147,7 @@ body {
 
 .scoreboard-instructions {
   font-family: "Permanent Marker", cursive;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   grid-column: 1 / span 3;
   grid-row: 2 / span 3;
 }
@@ -228,12 +229,17 @@ $board-height:    392px;*/
     box-sizing: border-box;
     /*background-color: green;*/
     border-bottom: 5px solid #eee;
+    border-top: 5px solid #eee;
 }
 
 .board-square:nth-child(33) {
     box-sizing: border-box;
-    /*background-color: green;*/
     border-left: 5px solid #eee;
+}
+
+.board-square:nth-child(40) {
+    box-sizing: border-box;
+    border-right: 5px solid #eee;
 }
 
 .tile {

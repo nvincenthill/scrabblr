@@ -12,7 +12,11 @@ class Scoreboard extends React.Component {
         {context => (
           <div className="scoreboard-wrapper">
             <div className="scoreboard">
-              <h2 className="scoreboard-score">Score : {context.state.score}</h2>
+              
+
+              {context.state.isInGameLoop ? (
+                <h2 className="scoreboard-score">Score : {context.state.score}</h2>
+              ) : null}
 
               {context.state.isInGameLoop ? (
                 <h2 className="scoreboard-found-words">
@@ -29,8 +33,7 @@ class Scoreboard extends React.Component {
               {/* <h2 className="timer">Time : {context.state.time}</h2> */}
 
               <p className="scoreboard-instructions">
-                This will be a brief summary of the main gameloop,
-                instructions/directions, in a cute branded message!
+                Find all valid words given a psuedo-random selection of letters!
               </p>
               {!context.state.isInGameLoop ? (
                 <button
