@@ -78,7 +78,7 @@ body {
   grid-column: span 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   padding: 0vmax 2vmax 0vmax 2vmax;
   height: 392px;
 }
@@ -90,7 +90,9 @@ body {
   font-size: 1.5em;
   grid-column: 1;
   grid-row: 1;
-  margin-top: 0;
+  margin-top: 2vh;
+  margin-right: 1vh;
+  margin-left: 1vh;
   margin-bottom: 0;
   font-family: "Permanent Marker", cursive;
 }
@@ -99,10 +101,12 @@ body {
   background: #222;
   text-align: center;
   align-self: center;
-  font-size: 1em;
+  font-size: 1.5em;
   grid-column: 2;
   grid-row: 1;
-  margin-top: 0;
+  margin-top: 2vh;
+  margin-right: 1vh;
+  margin-left: 1vh;
   margin-bottom: 0;
   font-family: "Permanent Marker", cursive;
 }
@@ -111,10 +115,12 @@ body {
   background: #222;
   text-align: center;
   align-self: center;
-  font-size: 1em;
+  font-size: 1.5em;
   grid-column: 3;
   grid-row: 1;
-  margin-top: 0;
+  margin-top: 2vh;
+  margin-right: 1vh;
+  margin-left: 1vh;
   margin-bottom: 0;
   font-family: "Permanent Marker", cursive;
 }
@@ -131,8 +137,8 @@ body {
 }
 
 .scoreboard-start-button {
-  grid-column: 2;
-  grid-row: 3;
+  grid-column: 1 / span 3;
+  grid-row: 2;
   font-family: "Permanent Marker", cursive;
   padding: 1vmax;
   background: none;
@@ -149,7 +155,7 @@ body {
   font-family: "Permanent Marker", cursive;
   font-size: 1.5rem;
   grid-column: 1 / span 3;
-  grid-row: 2 / span 3;
+  grid-row: 1 / span 3;
 }
 
 .fake-ad {
@@ -177,8 +183,6 @@ body {
 #scrabble {
   margin: 2vmax 2vmax;
   text-align: center;
-  /*  box-shadow: 0.5px 0.5px 0 #362817, 1px 1px 0 #362817, 1.5px 1.5px 0 #362817,
-    2px 2px 0 #362817, 2.5px 2.5px 0 #362817, 3px 3px 0 #362817;*/
 }
 
 .button-container {

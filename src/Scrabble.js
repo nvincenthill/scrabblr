@@ -74,7 +74,7 @@ class Scrabble extends React.Component {
           <div id="scrabble">
             <div className="board-border">
               <div className="board">
-                <FlipMove duration={200} staggerDelayBy={150}>
+                <FlipMove duration={2000} staggerDelayBy={150}>
                   {this.renderTiles()}
                 </FlipMove>
                 {this.renderBoardSquares()}
