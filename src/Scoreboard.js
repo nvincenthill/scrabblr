@@ -13,7 +13,7 @@ class Scoreboard extends React.Component {
           <div className="scoreboard-wrapper">
             <div className="scoreboard">
               <h2 className="score">Score : {context.state.score}</h2>
-              <h2 className="timer">Time : {context.state.time}</h2>
+              {/* <h2 className="timer">Time : {context.state.time}</h2> */}
 
               <p className="scoreboard-instructions">
                 This will be a brief summary of the main gameloop,

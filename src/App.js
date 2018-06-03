@@ -21,7 +21,7 @@ class MyProvider extends React.Component {
     super(props);
     this.state = {
       word: "example",
-      inGameLoop: false,
+      isInGameLoop: false,
       title: "SCRABBLR",
       randomWord: "",
       alphabet: [
@@ -54,32 +54,30 @@ class MyProvider extends React.Component {
       ],
       startingBlock: ["C", "O", "D", "E", "B", "E", "T", "T", "E", "R"],
       tiles: [
-        { id: 1, letter: "C", x: 3, y: 2, class: "tile" },
-        { id: 2, letter: "O", x: 4, y: 2, class: "tile" },
-        { id: 3, letter: "D", x: 5, y: 2, class: "tile" },
-        { id: 4, letter: "E", x: 6, y: 2, class: "tile" },
-        { id: 5, letter: "B", x: 2, y: 3, class: "tile" },
-        { id: 6, letter: "E", x: 3, y: 3, class: "tile" },
-        { id: 7, letter: "T", x: 4, y: 3, class: "tile" },
-        { id: 8, letter: "T", x: 5, y: 3, class: "tile" },
-        { id: 9, letter: "E", x: 6, y: 3, class: "tile" },
-        { id: 10, letter: "R", x: 7, y: 3, class: "tile" }
+        { id: 1, letter: "S", x: 1, y: 3, class: "tile" },
+        { id: 2, letter: "C", x: 2, y: 3, class: "tile" },
+        { id: 3, letter: "R", x: 3, y: 3, class: "tile" },
+        { id: 4, letter: "A", x: 4, y: 3, class: "tile" },
+        { id: 5, letter: "B", x: 5, y: 3, class: "tile" },
+        { id: 6, letter: "B", x: 6, y: 3, class: "tile" },
+        { id: 7, letter: "L", x: 7, y: 3, class: "tile" },
+        { id: 8, letter: "R", x: 8, y: 3, class: "tile" }
       ],
       startingTiles: [
-        { id: 1, letter: "C", x: 3, y: 2, class: "tile" },
-        { id: 2, letter: "O", x: 4, y: 2, class: "tile" },
-        { id: 3, letter: "D", x: 5, y: 2, class: "tile" },
-        { id: 4, letter: "E", x: 6, y: 2, class: "tile" },
-        { id: 5, letter: "B", x: 2, y: 3, class: "tile" },
-        { id: 6, letter: "E", x: 3, y: 3, class: "tile" },
-        { id: 7, letter: "T", x: 4, y: 3, class: "tile" },
-        { id: 8, letter: "T", x: 5, y: 3, class: "tile" },
-        { id: 9, letter: "E", x: 6, y: 3, class: "tile" },
-        { id: 10, letter: "R", x: 7, y: 3, class: "tile" }
+        { id: 1, letter: "S", x: 1, y: 3, class: "tile" },
+        { id: 2, letter: "C", x: 2, y: 3, class: "tile" },
+        { id: 3, letter: "R", x: 3, y: 3, class: "tile" },
+        { id: 4, letter: "A", x: 4, y: 3, class: "tile" },
+        { id: 5, letter: "B", x: 5, y: 3, class: "tile" },
+        { id: 6, letter: "B", x: 6, y: 3, class: "tile" },
+        { id: 7, letter: "L", x: 7, y: 3, class: "tile" },
+        { id: 8, letter: "R", x: 8, y: 3, class: "tile" }
       ],
       score: 0,
       time: 10,
+      matches: [],
       timer: null,
+      wordsToCheck: [],
       scoreHash: {
         a: { points: 1, weight: 9 },
         b: { points: 3, weight: 2 },
@@ -129,7 +127,7 @@ class MyProvider extends React.Component {
   resetTilePositions = () => {
     for (let i = 0; i < this.state.tiles.length; i++) {
       let temp = this.state.tiles;
-      temp[i].x = 0 + i;
+      temp[i].x = 1 + i;
       temp[i].y = 6;
       this.setState({ tiles: temp });
     }
@@ -137,24 +135,23 @@ class MyProvider extends React.Component {
 
   //
   generateRandomWord = () => {
-    let word = this.getRandomWord(this.state.alphabet, 10);
+    let word = this.getRandomWord(this.state.alphabet, 8);
     this.save(word);
+    this.generateMatches(word);
   };
 
   //find all valid English words for a string of characters
-  generateMatches = () => {
-    let allPosible = this.permute__of_all_size(
-      this.state.randomWord.toLowerCase()
-    );
-    let result = [];
+  generateMatches = string => {
+    let allPosible = this.permute__of_all_size(string.toLowerCase());
+    let results = [];
     for (let i = 0; i < allPosible.length; i++) {
       if (Dictionary.hasOwnProperty(allPosible[i])) {
-        result.push(allPosible[i]);
+        results.push(allPosible[i]);
       }
     }
-    result = result.sort((a, b) => b.length - a.length);
-    console.log(result);
-    return result;
+    results = [...new Set(results)].sort((a, b) => b.length - a.length);
+    this.setState({ matches: results });
+    return results;
   };
 
   //setState
@@ -164,27 +161,27 @@ class MyProvider extends React.Component {
 
   //start timer
   startTimer = () => {
-    let timer = setInterval(this.tick, 1000);
-    this.setState({ timer });
+    // let timer = setInterval(this.tick, 1000);
+    // this.setState({ timer });
   };
 
   //tick timer
   tick = () => {
-    this.setState({
-      time: this.state.time - 1
-    });
-    if (this.state.time === 0) {
-      this.endGameLoop();
-      clearInterval(this.state.timer);
-    }
+    // this.setState({
+    //   time: this.state.time - 1
+    // });
+    // if (this.state.time === 0) {
+    //   this.endGameLoop();
+    //   clearInterval(this.state.timer);
+    // }
   };
 
   //start gameloop
   startGameLoop = () => {
-    this.startTimer();
+    // this.startTimer();
     this.generateRandomWord();
     this.resetTilePositions();
-    this.setState({ inGameLoop: true });
+    this.setState({ isInGameLoop: true });
   };
 
   //end gameloop
@@ -194,12 +191,19 @@ class MyProvider extends React.Component {
 
   //check if word is a valid english word
   validateWord = () => {
-    console.log("Validating Word");
+    console.log(`Validating ${this.state.wordsToCheck}`);
+    this.handleValidityCheck(true);
+  };
+
+  //check if word is a valid english word
+  handleValidityCheck = isValid => {
+    console.log(`The word is ${isValid ? "valid" : "invalid"}`);
   };
 
   //check for words in matrix
   checkForWords = () => {
-    console.log("Checking for words");
+    console.log(`Checking tiles for words`);
+    console.log(this.state.tiles);
   };
 
   //Durstenfeld shuffle
@@ -259,6 +263,20 @@ class MyProvider extends React.Component {
   updateTiles = stateTiles => {
     this.setState({ tiles: stateTiles });
     console.log(this.state.tiles);
+    this.playClick();
+  };
+
+  // play a click sound
+  playClick = () => {
+    var audio = new Audio("click.mp3");
+    let playPromise = audio.play();
+
+    playPromise
+      .then(function() {
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   };
 
   resetTiles = () => {
@@ -278,7 +296,8 @@ class MyProvider extends React.Component {
           updateTiles: this.updateTiles,
           resetTiles: this.resetTiles,
           validateWord: this.validateWord,
-          startGameloop: this.startGameLoop
+          startGameloop: this.startGameLoop,
+          checkForWords: this.checkForWords
         }}
       >
         {this.props.children}

@@ -192,10 +192,24 @@ $board-height:    392px;*/
   background-color: #222;
   width: 56px;
   height: 56px;
+  
 }
+
 
 .dragged-over {
   background: #111;
+}
+
+.board-square:nth-child(n+33):nth-child(-n+40) {
+    box-sizing: border-box;
+    /*background-color: green;*/
+    border-bottom: 5px solid #eee;
+}
+
+.board-square:nth-child(33) {
+    box-sizing: border-box;
+    /*background-color: green;*/
+    border-left: 5px solid #eee;
 }
 
 .tile {

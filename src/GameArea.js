@@ -17,6 +17,8 @@ class GameArea extends React.Component {
               tiles={context.state.tiles}
               updateTiles={context.updateTiles}
               scoreHash={context.state.scoreHash}
+              isInGameLoop={context.state.isInGameLoop}
+              checkForWords={context.checkForWords}
             />
           </div>
         )}

@@ -35,6 +35,9 @@ class Scrabble extends React.Component {
     stateTiles[index] = { ...tile, x, y };
     this.props.updateTiles(stateTiles);
     // this.setState({justDropped: true})
+    if (this.props.isInGameLoop) {
+      this.props.checkForWords();
+    }
   }
 
   renderTiles() {
