@@ -165,6 +165,21 @@ body {
 
 .scoreboard-start-button {
   grid-column: 1 / span 3;
+  grid-row: 2;
+  font-family: "Permanent Marker", cursive;
+  padding: 1vmax;
+  background: none;
+  color: var(--color1);
+  border-width: 0;
+  font-weight: bold;
+  font-size: 4rem;
+  margin: 2vmax 2vmax 2vmax 2vmax;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.scoreboard-surrender-button {
+  grid-column: 1 / span 3;
   grid-row: 3;
   font-family: "Permanent Marker", cursive;
   padding: 1vmax;

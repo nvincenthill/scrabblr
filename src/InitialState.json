@@ -2,7 +2,8 @@
   "word": "example",
   "isModalDisplayed": false,
   "isInGameLoop": false,
-  "tileClass": "tile",
+  "tileClass": "tile animated zoomInDown",
+  "titleClass": "app-title animated fadeInDown",
   "title": "SCRABBLR",
   "randomWord": "",
   "alphabet": [

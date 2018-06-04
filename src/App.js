@@ -113,7 +113,8 @@ class MyProvider extends React.Component {
 
   // if the longest word is found
   handleLongestWordFound = () => {
-    this.setState({ tileClass: "tile animated infinite bounce"})
+    this.setState({ titleClass: "app-title animated tada"})
+    setTimeout(() => this.setState({ titleClass: "app-title"}), 1500)
   };
 
   // add score of word to total score
