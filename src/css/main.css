@@ -25,7 +25,11 @@ maintit *:after {
 }
 
 body {
-  background: var(--color1);
+  background:
+  linear-gradient(135deg, #222 22px, #ffd959 22px, #ffd959 24px, transparent 24px, transparent 67px, #ffd959 67px, #ffd959 69px, transparent 69px),
+  linear-gradient(225deg, #222 22px, #ffd959 22px, #ffd959 24px, transparent 24px, transparent 67px, #ffd959 67px, #ffd959 69px, transparent 69px)0 64px;
+  background-color:#222;
+  background-size: 64px 128px;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -45,7 +49,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 5px solid #111;
+  border-bottom: 5px solid var(--color3);
 }
 
 .app-title-container {
@@ -59,17 +63,16 @@ body {
   text-align: center;
   font-size: 2.5rem;
   font-weight: bold;
-  color: #eee;
+  color: var(--color3);
   background: #222;
-  box-shadow: 0.5px 0.5px 0 var(--color3), 1px 1px 0 var(--color3),
+/*  box-shadow: 0.5px 0.5px 0 var(--color3), 1px 1px 0 var(--color3),
     1.5px 1.5px 0 var(--color3), 2px 2px 0 var(--color3),
-    2.5px 2.5px 0 var(--color3), 3px 3px 0 var(--color3);
+    2.5px 2.5px 0 var(--color3), 3px 3px 0 var(--color3);*/
 }
 
 .app-title {
   margin: 0.5vmax -2rem 0.5vmax 0.5vmax;
   letter-spacing: 3rem;
-  color: var(--color3);
   font-size: 4rem;
   line-height: 56px;
   text-align: center;
@@ -89,8 +92,6 @@ body {
   grid-column: span 1;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  /*  box-shadow: 0.5px 0.5px 0 #362817, 1px 1px 0 #362817, 1.5px 1.5px 0 #362817,
-    2px 2px 0 #362817, 2.5px 2.5px 0 #362817, 3px 3px 0 #362817;*/
   height: 392px;
   border-top: 5px solid #444;
   border-right: 5px solid #222;
@@ -259,19 +260,19 @@ $board-height:    392px;*/
 
 .board-square:nth-child(n + 33):nth-child(-n + 40) {
   box-sizing: border-box;
-  border-bottom: 5px solid #eee;
-  border-top: 5px solid #eee;
+  border-bottom: 5px solid var(--color3);
+  border-top: 5px solid var(--color3);
   background-color: var(--color2);
 }
 
 .board-square:nth-child(33) {
   box-sizing: border-box;
-  border-left: 5px solid #eee;
+  border-left: 5px solid var(--color3);
 }
 
 .board-square:nth-child(40) {
   box-sizing: border-box;
-  border-right: 5px solid #eee;
+  border-right: 5px solid var(--color3);
 }
 
 .tile {
@@ -363,6 +364,7 @@ $board-height:    392px;*/
 
 .resultsmodal-finalscore {
   font-size: 2rem;
+  margin-bottom: 0;
   font-weight: bold;
   color: #222;
 }
@@ -436,4 +438,9 @@ button:focus {
 button:hover {
   transform: scale(1.25);
   transition: .25s ease-in-out;
+}
+
+hr {
+  margin-top: 1vmax;
+  margin-bottom: 1vmax;
 }
