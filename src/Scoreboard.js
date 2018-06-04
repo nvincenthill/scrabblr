@@ -48,7 +48,7 @@ class Scoreboard extends React.Component {
                 </button>
               ) : (
                 <button
-                  className="scoreboard-start-button animated fadeInDown"
+                  className="scoreboard-start-button animated fadeIn"
                   onClick={context.endGameLoop}
                 >
                   Surrender

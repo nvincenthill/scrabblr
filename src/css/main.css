@@ -82,7 +82,7 @@ body {
 
 .scoreboard-wrapper {
   color: #eee;
-  background: var(--color4);
+  background: var(--color3);
   margin: 2vmax 2vmax;
   padding: 1vmax;
   max-width: 560px;
@@ -235,7 +235,7 @@ $board-height:    392px;*/
 
 .board-border {
   position: relative;
-  background: var(--color4);
+  background: var(--color3);
   /*margin: 1px;*/
   width: 560px;
   height: 392px;

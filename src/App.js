@@ -1,23 +1,23 @@
 import React from "react";
 
-//data
+// data
 import Dictionary from "./Dictionary.json";
 import InitialState from "./InitialState.json";
 
-//internal components
+// internal components
 import GameArea from "./GameArea.js";
 import Scoreboard from "./Scoreboard.js";
 import Footer from "./Footer";
 import Header from "./Header";
 import ResultsModal from "./ResultsModal";
 
-//external components
+// external components
 import GithubCorner from "react-github-corner";
 
-// Make a new context
+// make a new context
 const MyContext = React.createContext();
 
-// Then create a provider Component
+// then create a provider Component
 class MyProvider extends React.Component {
   constructor(props) {
     super(props);
@@ -34,7 +34,7 @@ class MyProvider extends React.Component {
     }
   };
 
-  //find all valid English words for a string of characters
+  // find all valid English words for a string of characters
   generateMatches = string => {
     let allPosible = this.permute__of_all_size(string.toLowerCase());
     let results = [];
@@ -48,7 +48,7 @@ class MyProvider extends React.Component {
     return results;
   };
 
-  //start gameloop
+  // start gameloop
   startGameLoop = () => {
     let word = this.getWord();
     this.resetTilePositions();
@@ -57,7 +57,7 @@ class MyProvider extends React.Component {
     this.playSound("woodshuffle");
   };
 
-  //get a word
+  // get a word
   getWord = () => {
     let wordLength = 8;
     let word = this.getWordFromDictionary(wordLength);
@@ -73,7 +73,7 @@ class MyProvider extends React.Component {
     return word;
   };
 
-  //end gameloop
+  // end gameloop
   endGameLoop = () => {
     this.setState({
       isInGameLoop: false,
@@ -83,7 +83,7 @@ class MyProvider extends React.Component {
     this.handleShowResultsModal();
   };
 
-  //check if word is a valid english word
+  // check if word is a valid english word
   validateWord = word => {
     let result = false;
 
@@ -94,7 +94,7 @@ class MyProvider extends React.Component {
     this.handleValidityCheck(result, word);
   };
 
-  //check if word is a valid english word
+  // check if word is a valid english word
   handleValidityCheck = (isValid, word) => {
     if (isValid && !this.state.foundWords.includes(word) && word.length !== 8) {
       // if a valid word is found
@@ -116,7 +116,7 @@ class MyProvider extends React.Component {
     this.setState({ tileClass: "tile animated infinite bounce"})
   };
 
-  //add score of word to total score
+  // add score of word to total score
   incrementScore = scoreOfWord => {
     let newScore = this.state.score + scoreOfWord;
     this.setState({ score: newScore });
@@ -150,7 +150,7 @@ class MyProvider extends React.Component {
     }
   };
 
-  //score word
+  // score word
   scoreWord = word => {
     let letters = word.split("");
     let result = 0;
@@ -170,7 +170,7 @@ class MyProvider extends React.Component {
     return shuffledArray[0];
   };
 
-  //check for words in matrix
+  // check for words in matrix
   checkForWords = () => {
     let capturedTiles = [];
     let tiles = this.state.tiles;
@@ -182,7 +182,7 @@ class MyProvider extends React.Component {
 
     let result = "";
 
-    //TODO handle spaces on submission line
+    // TODO handle spaces on submission line
 
     // sort by x position in matrix
     capturedTiles.sort((a, b) => {
@@ -195,17 +195,17 @@ class MyProvider extends React.Component {
     this.validateWord(result);
   };
 
-  //show results modal
+  // show results modal
   handleShowResultsModal = () => {
     this.setState({ isModalDisplayed: true });
   };
 
-  //close results modal
+  // close results modal
   handleCloseResultsModal = () => {
     this.setState({ isModalDisplayed: false });
   };
 
-  //Durstenfeld shuffle
+  // Durstenfeld shuffle
   shuffleArray = array => {
     for (let i = array.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
@@ -216,7 +216,7 @@ class MyProvider extends React.Component {
     return array;
   };
 
-  //Find all permutations of an array
+  // find all permutations of an array
   swap = (array, i, j) => {
     if (i !== j) {
       let swap = array[i];
