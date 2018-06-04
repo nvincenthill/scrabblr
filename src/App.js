@@ -9,6 +9,7 @@ import GameArea from "./GameArea.js";
 import Scoreboard from "./Scoreboard.js";
 import Footer from "./Footer";
 import Header from "./Header";
+import ResultsModal from "./ResultsModal";
 
 //external components
 import GithubCorner from "react-github-corner";
@@ -52,7 +53,7 @@ class MyProvider extends React.Component {
     let word = this.getWord();
     this.resetTilePositions();
     this.generateMatches(word);
-    this.setState({ isInGameLoop: true });
+    this.setState({ isInGameLoop: true, foundWords: [], score: 0 });
     this.playSound("woodshuffle");
   };
 
@@ -61,27 +62,25 @@ class MyProvider extends React.Component {
     let wordLength = 8;
     let word = this.getWordFromDictionary(wordLength);
     console.log(word);
-    word = this.shuffleArray(word.split('')).join('');
+    word = this.shuffleArray(word.split("")).join("");
     console.log(word);
-    this.setState({ randomWord: word});
-      for (let i = 0; i < word.length; i++) {
-        let temp = this.state.tiles;
-        temp[i].letter = word[i].toUpperCase();
-        this.setState({ tiles: temp });
-      }
+    this.setState({ randomWord: word });
+    for (let i = 0; i < word.length; i++) {
+      let temp = this.state.tiles;
+      temp[i].letter = word[i].toUpperCase();
+      this.setState({ tiles: temp });
+    }
     return word;
-  }
+  };
 
   //end gameloop
   endGameLoop = () => {
-    alert(`You scored ${this.state.score}`);
     this.setState({
-      score: 0,
-      foundWords: [],
       isInGameLoop: false,
       tiles: this.state.startingTiles
     });
     this.playSound("wood1");
+    this.handleShowResultsModal();
   };
 
   //check if word is a valid english word
@@ -151,10 +150,12 @@ class MyProvider extends React.Component {
   // get random word from dictionary with length of n
   getWordFromDictionary = lengthOfWord => {
     let words = Object.keys(Dictionary);
-    let arrayOfNLengthStrings = words.filter(word => word.length === lengthOfWord);
+    let arrayOfNLengthStrings = words.filter(
+      word => word.length === lengthOfWord
+    );
     let shuffledArray = this.shuffleArray(arrayOfNLengthStrings);
     return shuffledArray[0];
-  }
+  };
 
   //check for words in matrix
   checkForWords = () => {
@@ -174,10 +175,21 @@ class MyProvider extends React.Component {
     capturedTiles.sort((a, b) => {
       return a.x > b.x ? 1 : b.x > a.x ? -1 : 0;
     });
+
     for (let j = 0; j < capturedTiles.length; j++) {
       result += capturedTiles[j].letter.toLowerCase();
     }
     this.validateWord(result);
+  };
+
+  //show results modal
+  handleShowResultsModal = () => {
+    this.setState({ isModalDisplayed: true });
+  };
+
+  //close results modal
+  handleCloseResultsModal = () => {
+    this.setState({ isModalDisplayed: false });
   };
 
   //Durstenfeld shuffle
@@ -266,7 +278,8 @@ class MyProvider extends React.Component {
           validateWord: this.validateWord,
           startGameloop: this.startGameLoop,
           checkForWords: this.checkForWords,
-          endGameLoop: this.endGameLoop
+          endGameLoop: this.endGameLoop,
+          handleCloseResultsModal: this.handleCloseResultsModal
         }}
       >
         {this.props.children}
@@ -294,6 +307,9 @@ class App extends React.Component {
                 <Scoreboard />
                 <Footer />
               </div>
+              <ResultsModal
+                handleCloseResultsModal={context.handleCloseResultsModal}
+              />
             </React.Fragment>
           )}
         </MyContext.Consumer>

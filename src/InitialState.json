@@ -1,5 +1,6 @@
 {
   "word": "example",
+  "isModalDisplayed": false,
   "isInGameLoop": false,
   "title": "SCRABBLR",
   "randomWord": "",

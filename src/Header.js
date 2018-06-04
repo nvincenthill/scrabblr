@@ -10,8 +10,10 @@ class Header extends React.Component {
     return (
       <MyContext.Consumer>
         {context => (
-          <header className="App-header">
-            <h1 className="App-title animated fadeInLeft">{context.state.title}</h1>
+          <header className="app-header">
+            <div className="app-title-container">
+              <p className="app-title">{context.state.title}</p>
+            </div>
             <div className="fake-ad"> YOUR AD HERE </div>
           </header>
         )}

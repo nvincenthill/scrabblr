@@ -35,8 +35,7 @@ class Scoreboard extends React.Component {
 
               {!context.state.isInGameLoop ? (
                 <p className="scoreboard-instructions">
-                  Find all valid words given a psuedo-random selection of
-                  letters!
+                  Find all valid words in a scrambled eight-letter word!
                 </p>
               ) : null}
 
@@ -45,14 +44,14 @@ class Scoreboard extends React.Component {
                   className="scoreboard-start-button"
                   onClick={context.startGameloop}
                 >
-                  START
+                  Start
                 </button>
               ) : (
                 <button
                   className="scoreboard-start-button"
                   onClick={context.endGameLoop}
                 >
-                  RESTART
+                  Surrender
                 </button>
               )}
             </div>
