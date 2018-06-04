@@ -43,7 +43,7 @@ class Scrabble extends React.Component {
   renderTiles() {
     return this.props.tiles.map((tile, index) => {
       return (
-        <Tile justDropped={this.state.justDropped} key={index} onDrop={this.updateDroppedTilePosition} scoreHash={this.props.scoreHash}{...tile} />
+        <Tile tileClass={this.props.tileClass}justDropped={this.state.justDropped} key={index} onDrop={this.updateDroppedTilePosition} scoreHash={this.props.scoreHash}{...tile} />
       );
     });
   }

@@ -96,11 +96,24 @@ class MyProvider extends React.Component {
 
   //check if word is a valid english word
   handleValidityCheck = (isValid, word) => {
-    if (isValid && !this.state.foundWords.includes(word)) {
+    if (isValid && !this.state.foundWords.includes(word) && word.length !== 8) {
+      // if a valid word is found
       this.scoreWord(word);
       this.addWordToFoundWords(word);
       this.playSound("door");
+    } else if (isValid && !this.state.foundWords.includes(word) && word.length === 8) {
+      // if the longest word is found
+      this.scoreWord(word);
+      this.addWordToFoundWords(word);
+      this.playSound("success");
+      this.resetTilePositions();
+      this.handleLongestWordFound();
     }
+  };
+
+  // if the longest word is found
+  handleLongestWordFound = () => {
+    this.setState({ tileClass: "tile animated infinite bounce"})
   };
 
   //add score of word to total score

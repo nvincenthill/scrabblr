@@ -113,7 +113,7 @@ body {
   background: #222;
   text-align: center;
   align-self: center;
-  font-size: 1.5em;
+  font-size: 2em;
   grid-column: 1;
   grid-row: 1;
   margin-top: 2vh;
@@ -127,7 +127,7 @@ body {
   background: #222;
   text-align: center;
   align-self: center;
-  font-size: 1.5em;
+  font-size: 2em;
   grid-column: 2;
   grid-row: 1;
   margin-top: 2vh;
@@ -141,7 +141,7 @@ body {
   background: #222;
   text-align: center;
   align-self: center;
-  font-size: 1.5em;
+  font-size: 2em;
   grid-column: 3;
   grid-row: 1;
   margin-top: 2vh;
@@ -374,10 +374,12 @@ $board-height:    392px;*/
 
 .resultsmodal-wordsfound {
   font-family: var(--first-font);
+  font-size: 1.5em;
 }
 
 .resultsmodal-remainingwords {
   font-family: var(--first-font);
+  font-size: 1.5em;
 }
 
 

@@ -54,15 +54,10 @@ class Tile extends React.Component {
       zIndex: `${x + 1}${y + 1}`,
       opacity: isDragging ? 0.5 : 1
     };
-
-    const classes = classNames({
-      "tile": true,
-      "tile animated infinite bounce": this.props.justDropped,
-    });
-
+    
     return connectDropTarget(
       connectDragSource(
-        <div className={classes} style={styles}>
+        <div className={this.props.tileClass} style={styles}>
           <span className="tile-letter">{letter}</span>
           <span className="tile-points">{this.props.scoreHash[letter.toLowerCase()].points ? this.props.scoreHash[letter.toLowerCase()].points : 0}</span>
         </div>

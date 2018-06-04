@@ -2,6 +2,7 @@
   "word": "example",
   "isModalDisplayed": false,
   "isInGameLoop": false,
+  "tileClass": "tile animated bounceIn",
   "title": "SCRABBLR",
   "randomWord": "",
   "alphabet": [

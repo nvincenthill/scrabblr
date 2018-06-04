@@ -12,7 +12,7 @@ class Header extends React.Component {
         {context => (
           <header className="app-header">
             <div className="app-title-container">
-              <p className="app-title">{context.state.title}</p>
+              <p className="app-title animated fadeInDown">{context.state.title}</p>
             </div>
             <div className="fake-ad"> YOUR AD HERE </div>
           </header>

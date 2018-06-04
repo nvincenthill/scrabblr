@@ -35,20 +35,20 @@ class Scoreboard extends React.Component {
 
               {!context.state.isInGameLoop ? (
                 <p className="scoreboard-instructions">
-                  Find all valid words in a scrambled eight-letter word!
+                  Find all valid words in a scrambled eight letter word!
                 </p>
               ) : null}
 
               {!context.state.isInGameLoop ? (
                 <button
-                  className="scoreboard-start-button"
+                  className="scoreboard-start-button animated fadeIn"
                   onClick={context.startGameloop}
                 >
                   Start
                 </button>
               ) : (
                 <button
-                  className="scoreboard-start-button"
+                  className="scoreboard-start-button animated fadeInDown"
                   onClick={context.endGameLoop}
                 >
                   Surrender
