@@ -180,20 +180,32 @@ class MyProvider extends React.Component {
         capturedTiles.push(tiles[i]);
       }
     }
-
     let result = "";
-
-    // TODO handle spaces on submission line
 
     // sort by x position in matrix
     capturedTiles.sort((a, b) => {
       return a.x > b.x ? 1 : b.x > a.x ? -1 : 0;
     });
 
-    for (let j = 0; j < capturedTiles.length; j++) {
-      result += capturedTiles[j].letter.toLowerCase();
+    let containsALetter = function(element, index) {
+      return element.x === index + 1;
+    };
+
+    for (let j = 0; j < 8; j++) {
+      if (!capturedTiles.some((el) => containsALetter(el, j))) {
+        capturedTiles.splice(j, 0, " ");
+      }
     }
-    this.validateWord(result);
+
+    for (let j = 0; j < capturedTiles.length; j++) {
+      if (capturedTiles[j].letter) {
+        result += capturedTiles[j].letter.toLowerCase();
+      } else {
+        result += " ";
+      }     
+    }
+
+    this.validateWord(result.trim());
   };
 
   // show results modal

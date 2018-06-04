@@ -37,6 +37,8 @@ body {
 
 .App {
   text-align: center;
+  align-content: center;
+  justify-content: center;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 20vmin 75vmin 5vmin;
@@ -84,6 +86,7 @@ body {
 }
 
 .scoreboard-wrapper {
+  justify-self: end;
   color: #eee;
   background: var(--color3);
   margin: 2vmax 4vmax 2vmax 2vmax;
@@ -224,6 +227,7 @@ body {
 }
 
 #scrabble {
+  justify-self: start;
   margin: 2vmax 2vmax 2vmax 4vmax;
   text-align: center;
 }
