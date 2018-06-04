@@ -65,6 +65,7 @@ body {
     1.5px 1.5px 0 var(--color3), 2px 2px 0 var(--color3),
     2.5px 2.5px 0 var(--color3), 3px 3px 0 var(--color3);
 }
+
 .app-title {
   margin: 0.5vmax -2rem 0.5vmax 0.5vmax;
   letter-spacing: 3rem;
@@ -84,6 +85,7 @@ body {
   background: var(--color4);
   margin: 2vmax 2vmax;
   padding: 1vmax;
+  max-width: 560px;
   grid-column: span 1;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
@@ -387,12 +389,12 @@ $board-height:    392px;*/
 #resultsmodal-footer-button {
   margin-top: 1vmax;
   margin-bottom: 1vmax;
-  padding: 2vmax 3vmax;
+  padding: 1vmax 2vmax;
   transition: .25s ease-in-out;
   background: #ffd959;
   color: #222;
   border-width: 0;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
   margin: 2vmax 2vmax 2vmax 2vmax;
   cursor: pointer;

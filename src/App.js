@@ -300,6 +300,7 @@ class App extends React.Component {
                 octoColor="#222"
                 bannerColor="#ffd959"
                 className="corner"
+                size={100}
               />
               <div className="App">
                 <Header />
