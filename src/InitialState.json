@@ -3,7 +3,7 @@
   "isModalDisplayed": false,
   "isInGameLoop": false,
   "tileClass": "tile animated zoomInDown",
-  "titleClass": "app-title animated fadeInDown",
+  "titleClass": "app-title",
   "title": "SCRABBLR",
   "randomWord": "",
   "alphabet": [

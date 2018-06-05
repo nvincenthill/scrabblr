@@ -230,6 +230,7 @@ body {
   justify-self: start;
   margin: 2vmax 2vmax 2vmax 4vmax;
   text-align: center;
+  display: none;
 }
 
 .button-container {
@@ -462,4 +463,34 @@ button:hover {
 hr {
   margin-top: 1vmax;
   margin-bottom: 1vmax;
+}
+
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+  
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    #scrabble {
+      display: inline;
+    }
+
+    .scoreboard-wrapper {
+      justify-self: end;
+      color: #eee;
+      background: var(--color3);
+      margin: 2vmax 4vmax 2vmax 2vmax;
+      padding: 1vmax;
+      max-width: 560px;
+      grid-column: span 1;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      height: 392px;
+      border-top: 5px solid #444;
+      border-right: 5px solid #222;
+      border-bottom: 5px solid #222;
+      border-left: 5px solid #333;
+    }
 }
