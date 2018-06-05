@@ -25,9 +25,7 @@ maintit *:after {
 }
 
 body {
-  background:
-  linear-gradient(135deg, #222 22px, #ffd959 22px, #ffd959 24px, transparent 24px, transparent 67px, #ffd959 67px, #ffd959 69px, transparent 69px),
-  linear-gradient(225deg, #222 22px, #ffd959 22px, #ffd959 24px, transparent 24px, transparent 67px, #ffd959 67px, #ffd959 69px, transparent 69px)0 64px;
+  background: var(--color2);
   background-color:#222;
   background-size: 64px 128px;
   margin: 0;
@@ -51,7 +49,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 5px solid var(--color3);
+  border-bottom: 10px solid var(--color3);
 }
 
 .app-title-container {
@@ -115,6 +113,7 @@ body {
 
 .scoreboard-score {
   background: #222;
+  color: var(--color3);
   text-align: center;
   align-self: center;
   font-size: 2em;
@@ -129,6 +128,7 @@ body {
 
 .scoreboard-found-words {
   background: #222;
+  color: var(--color3);
   text-align: center;
   align-self: center;
   font-size: 2em;
@@ -143,6 +143,7 @@ body {
 
 .scoreboard-words-left {
   background: #222;
+  color: var(--color3);
   text-align: center;
   align-self: center;
   font-size: 2em;
@@ -172,7 +173,7 @@ body {
   font-family: "Permanent Marker", cursive;
   padding: 1vmax;
   background: none;
-  color: var(--color1);
+  color: var(--color3);
   border-width: 0;
   font-weight: bold;
   font-size: 4rem;
@@ -187,7 +188,7 @@ body {
   font-family: "Permanent Marker", cursive;
   padding: 1vmax;
   background: none;
-  color: var(--color1);
+  color: var(--color3);
   border-width: 0;
   font-weight: bold;
   font-size: 4rem;
@@ -200,6 +201,7 @@ body {
   margin-top: 2vmax;
   font-family: "Permanent Marker", cursive;
   font-size: 2.5rem;
+  color: var(--color3);
   grid-column: 1 / span 3;
   grid-row: 1 / span 3;
 }
@@ -474,7 +476,7 @@ hr {
 @media only screen and (min-width: 768px) {
     /* For desktop: */
     #scrabble {
-      display: inline;
+      display: block;
     }
 
     .scoreboard-wrapper {
