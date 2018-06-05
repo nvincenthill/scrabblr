@@ -14,7 +14,6 @@ class Header extends React.Component {
             <div className="app-title-container">
               <p className={context.state.titleClass}>{context.state.title}</p>
             </div>
-            <div className="fake-ad"> YOUR AD HERE </div>
           </header>
         )}
       </MyContext.Consumer>

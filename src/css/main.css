@@ -9,7 +9,6 @@ html {
   overflow-x: hidden;
   margin-right: 0 !important;
   overflow: hidden;
-  /*font-size: 62.5%;*/
   --first-font: "Permanent Marker", cursive;
   --color1: #eee;
   --color2: #222;
@@ -25,8 +24,7 @@ maintit *:after {
 }
 
 body {
-  background: var(--color2);
-  background-color:#222;
+  background: var(--color1);
   background-size: 64px 128px;
   margin: 0;
   padding: 0;
@@ -49,7 +47,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 10px solid var(--color3);
 }
 
 .app-title-container {
@@ -65,9 +62,6 @@ body {
   font-weight: bold;
   color: var(--color3);
   background: #222;
-/*  box-shadow: 0.5px 0.5px 0 var(--color3), 1px 1px 0 var(--color3),
-    1.5px 1.5px 0 var(--color3), 2px 2px 0 var(--color3),
-    2.5px 2.5px 0 var(--color3), 3px 3px 0 var(--color3);*/
 }
 
 .app-title {
@@ -206,28 +200,6 @@ body {
   grid-row: 1 / span 3;
 }
 
-.fake-ad {
-  grid-column: 2;
-  justify-content: center;
-  display: flex;
-  vertical-align: middle;
-  align-self: center;
-  text-align: center;
-  margin-right: 2vmax;
-  grid-column-start: 3;
-  grid-column-end: end;
-  /*margin: 0vmax 2vmax;*/
-  background: white;
-  font-weight: bold;
-  color: #222;
-  margin: 2vmax 2vmax;
-  padding: 0vmax 2vmax;
-  font-size: 3rem;
-  color: #222;
-  letter-spacing: 10px;
-  display: none;
-}
-
 #scrabble {
   justify-self: start;
   margin: 2vmax 2vmax 2vmax 4vmax;
@@ -242,14 +214,6 @@ body {
   grid-column-end: end;
 }
 
-/*$tile-size:       56px;
-$square-size:     56px;
-$squares-per-row: 11;
-$squares-per-col: 7;
-$gutter-width:    8px;
-$board-width:     616px;
-$board-height:    392px;*/
-
 .board {
   display: flex;
   flex-wrap: wrap;
@@ -259,7 +223,6 @@ $board-height:    392px;*/
 .board-border {
   position: relative;
   background: var(--color3);
-  /*margin: 1px;*/
   width: 560px;
   height: 392px;
   padding: 1vmax;
@@ -310,10 +273,6 @@ $board-height:    392px;*/
     2px 2px 0 #bda259, 2.5px 2.5px 0 #bda259, 3px 3px 0 #bda259;
 }
 
-.tile:hover {
-  /*background: red;*/
-}
-
 .is-dragging {
   opacity: 0.7;
 }
@@ -328,7 +287,6 @@ $board-height:    392px;*/
 
 .tile-letter {
   position: absolute;
-  /*border-width: 1px;*/
   top: 0;
   left: 0;
   right: 0;
@@ -466,7 +424,6 @@ hr {
   margin-top: 1vmax;
   margin-bottom: 1vmax;
 }
-
 
 @media only screen and (min-width: 600px) {
     /* For tablets: */

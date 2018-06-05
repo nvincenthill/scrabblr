@@ -86,11 +86,9 @@ class MyProvider extends React.Component {
   // check if word is a valid english word
   validateWord = word => {
     let result = false;
-
     if (Dictionary.hasOwnProperty(word)) {
       result = true;
     }
-
     this.handleValidityCheck(result, word);
   };
 
@@ -100,8 +98,12 @@ class MyProvider extends React.Component {
       // if a valid word is found
       this.scoreWord(word);
       this.addWordToFoundWords(word);
-      this.playSound("door");
-    } else if (isValid && !this.state.foundWords.includes(word) && word.length === 8) {
+      this.playSound("success");
+    } else if (
+      isValid &&
+      !this.state.foundWords.includes(word) &&
+      word.length === 8
+    ) {
       // if the longest word is found
       this.scoreWord(word);
       this.addWordToFoundWords(word);
@@ -113,8 +115,8 @@ class MyProvider extends React.Component {
 
   // if the longest word is found
   handleLongestWordFound = () => {
-    this.setState({ titleClass: "app-title animated tada"})
-    setTimeout(() => this.setState({ titleClass: "app-title"}), 1500)
+    this.setState({ titleClass: "app-title animated tada" });
+    setTimeout(() => this.setState({ titleClass: "app-title" }), 1500);
   };
 
   // add score of word to total score
@@ -124,6 +126,7 @@ class MyProvider extends React.Component {
     this.checkVictoryConditions();
   };
 
+  // end game if all matches are found
   checkVictoryConditions = () => {
     if (this.state.remainingMatches.length === 0) {
       this.endGameLoop();
@@ -141,7 +144,6 @@ class MyProvider extends React.Component {
   };
 
   // remove word from remaining matches
-
   removeFromRemaining = word => {
     let array = this.state.remainingMatches;
     let index = array.indexOf(word);
@@ -192,7 +194,7 @@ class MyProvider extends React.Component {
     };
 
     for (let j = 0; j < 8; j++) {
-      if (!capturedTiles.some((el) => containsALetter(el, j))) {
+      if (!capturedTiles.some(el => containsALetter(el, j))) {
         capturedTiles.splice(j, 0, " ");
       }
     }
@@ -202,7 +204,7 @@ class MyProvider extends React.Component {
         result += capturedTiles[j].letter.toLowerCase();
       } else {
         result += " ";
-      }     
+      }
     }
 
     this.validateWord(result.trim());
@@ -265,6 +267,7 @@ class MyProvider extends React.Component {
     }
   };
 
+  // find all permutations for all lengths
   permute__of_all_size = array => {
     let res = [];
     this.xpermute_rec(res, [], array);
@@ -287,12 +290,12 @@ class MyProvider extends React.Component {
     });
   };
 
+  // reset tiles to starting positions
   resetTiles = () => {
     this.setState({ tiles: this.state.startingTiles });
   };
 
-  componentWillMount() {}
-
+  // render provider component
   render() {
     return (
       <MyContext.Provider
@@ -314,6 +317,7 @@ class MyProvider extends React.Component {
   }
 }
 
+// render main app component
 class App extends React.Component {
   render() {
     return (
@@ -345,6 +349,7 @@ class App extends React.Component {
   }
 }
 
+// export app component
 export default App;
 
 // export context
