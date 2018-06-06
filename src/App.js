@@ -98,7 +98,7 @@ class MyProvider extends React.Component {
       // if a valid word is found
       this.scoreWord(word);
       this.addWordToFoundWords(word);
-      this.playSound("success");
+      this.playSound("minor-success");
     } else if (
       isValid &&
       !this.state.foundWords.includes(word) &&
@@ -283,6 +283,7 @@ class MyProvider extends React.Component {
   // play a click sound
   playSound = sound => {
     var audio = new Audio(`${sound}.mp3`);
+    audio.volume = 0.2;
     let playPromise = audio.play();
 
     playPromise.then(function() {}).catch(function(error) {
