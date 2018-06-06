@@ -36,14 +36,18 @@ body {
   align-content: center;
   justify-content: center;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1;
   grid-template-rows: 20vmin 75vmin 5vmin;
+}
+
+.corner {
+  display: none;
 }
 
 .app-header {
   background-color: var(--color2);
   font-size: 1rem;
-  grid-column: 1 / span 5;
+  grid-column: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,8 +69,8 @@ body {
 }
 
 .app-title {
-  margin: 0.5vmax -2rem 0.5vmax 0.5vmax;
-  letter-spacing: 3rem;
+  margin: 0.5vmax 0rem 0.5vmax 0.5vmax;
+  letter-spacing: 1rem;
   font-size: 4rem;
   line-height: 56px;
   text-align: center;
@@ -85,6 +89,7 @@ body {
   padding: 1vmax;
   max-width: 560px;
   grid-column: span 1;
+  grid-row: 2;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
   height: 392px;
@@ -318,7 +323,6 @@ body {
 }
 
 .resultsmodal {
-
 }
 
 .resultsmodal-title {
@@ -327,14 +331,12 @@ body {
   font-weight: bold;
   color: #222;
   line-height: 6rem;
-
 }
 
 .resultsmodal-scoreboard {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1;
-
 }
 .resultsmodal-subheader {
   font-size: 2rem;
@@ -364,7 +366,6 @@ body {
   font-size: 1.5em;
 }
 
-
 .resultsmodal-footer {
   text-align: center;
   padding: 1vmax 4vmax;
@@ -374,7 +375,7 @@ body {
   margin-top: 1vmax;
   margin-bottom: 1vmax;
   padding: 1vmax 2vmax;
-  transition: .25s ease-in-out;
+  transition: 0.25s ease-in-out;
   background: #ffd959;
   color: #222;
   border-width: 0;
@@ -390,7 +391,7 @@ body {
 
 #resultsmodal-footer-button:hover {
   transform: scale(1.1);
-  transition: .25s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
 .footer {
@@ -401,7 +402,7 @@ body {
 
 button {
   padding: 1vmax;
-  transition: .25s ease-in-out;
+  transition: 0.25s ease-in-out;
   background: #ffd959;
   color: #222;
   border-width: 0;
@@ -417,7 +418,7 @@ button:focus {
 
 button:hover {
   transform: scale(1.25);
-  transition: .25s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
 hr {
@@ -426,30 +427,75 @@ hr {
 }
 
 @media only screen and (min-width: 600px) {
-    /* For tablets: */
-  
+  /* For tablets: */
 }
 
 @media only screen and (min-width: 768px) {
-    /* For desktop: */
-    #scrabble {
-      display: block;
-    }
+  /* For desktop: */
+  .App {
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 20vmin 75vmin 5vmin;
+  }
 
-    .scoreboard-wrapper {
-      justify-self: end;
-      color: #eee;
-      background: var(--color3);
-      margin: 2vmax 4vmax 2vmax 2vmax;
-      padding: 1vmax;
-      max-width: 560px;
-      grid-column: span 1;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(4, 1fr);
-      height: 392px;
-      border-top: 5px solid #444;
-      border-right: 5px solid #222;
-      border-bottom: 5px solid #222;
-      border-left: 5px solid #333;
-    }
+  .corner {
+    display: inline;
+  }
+
+  .app-header {
+    background-color: var(--color2);
+    font-size: 1rem;
+    grid-column: 1 / span 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .app-title-container {
+    grid-column: 3;
+    margin: 1vmax -1.2em 1vmax 2vmax;
+    padding: 0vmax 1vmax;
+    align-self: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--color3);
+    background: #222;
+  }
+
+  .app-title {
+    margin: 0.5vmax -2rem 0.5vmax 0.5vmax;
+    letter-spacing: 3rem;
+    font-size: 4rem;
+    line-height: 56px;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  #scrabble {
+    display: block;
+  }
+
+  .scoreboard-wrapper {
+    justify-self: end;
+    color: #eee;
+    background: var(--color3);
+    margin: 2vmax 4vmax 2vmax 2vmax;
+    padding: 1vmax;
+    max-width: 560px;
+    grid-column: span 1;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    height: 392px;
+    border-top: 5px solid #444;
+    border-right: 5px solid #222;
+    border-bottom: 5px solid #222;
+    border-left: 5px solid #333;
+  }
 }

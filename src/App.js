@@ -210,7 +210,7 @@ class MyProvider extends React.Component {
     this.validateWord(result.trim());
   };
 
-  // show results modal
+  // display results modal
   handleShowResultsModal = () => {
     this.setState({ isModalDisplayed: true });
   };

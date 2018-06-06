@@ -12,7 +12,7 @@ class Footer extends React.Component {
         {context => (
           <div className="footer">
             {/* <p id="footer-name" className="animated fadeInUp">
-              Created in 2018 by 
+              Created in 2018 by {" "}
               <a href="http://nvincenthill.herokuapp.com/">
                 Nicholas Vincent-Hill
               </a>
