@@ -106,7 +106,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  padding: 0vmax 4vmax 0vmax 4vmax;
+  padding: 0vmax 2vmax 0vmax 2vmax;
   height: 392px;
 }
 
