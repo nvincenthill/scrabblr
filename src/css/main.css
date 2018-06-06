@@ -37,7 +37,7 @@ body {
   justify-content: center;
   display: grid;
   grid-template-columns: 1;
-  grid-template-rows: 20vmin 75vmin 5vmin;
+  grid-template-rows: 20vmax 75vmax 5vmax;
 }
 
 .corner {
@@ -55,7 +55,7 @@ body {
 
 .app-title-container {
   grid-column: 3;
-  margin: 1vmax -1.2em 1vmax 2vmax;
+  margin: 0vmax 0em 0vmax 0vmax;
   padding: 0vmax 1vmax;
   align-self: center;
   align-items: center;
@@ -82,7 +82,7 @@ body {
 }
 
 .scoreboard-wrapper {
-  justify-self: end;
+/*  justify-self: end;*/
   color: #eee;
   background: var(--color3);
   margin: 2vmax 4vmax 2vmax 2vmax;
@@ -167,6 +167,7 @@ body {
 }
 
 .scoreboard-start-button {
+  display: none;
   grid-column: 1 / span 3;
   grid-row: 2;
   font-family: "Permanent Marker", cursive;
@@ -197,6 +198,17 @@ body {
 }
 
 .scoreboard-instructions {
+  display: none;
+  margin-top: 2vmax;
+  font-family: "Permanent Marker", cursive;
+  font-size: 2.5rem;
+  color: var(--color3);
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 3;
+}
+
+.scoreboard-mobile-message {
+/*  display: none;*/
   margin-top: 2vmax;
   font-family: "Permanent Marker", cursive;
   font-size: 2.5rem;
@@ -426,11 +438,8 @@ hr {
   margin-bottom: 1vmax;
 }
 
-@media only screen and (min-width: 600px) {
-  /* For tablets: */
-}
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1023px) {
   /* For desktop: */
   .App {
     text-align: center;
@@ -497,5 +506,17 @@ hr {
     border-right: 5px solid #222;
     border-bottom: 5px solid #222;
     border-left: 5px solid #333;
+  }
+
+  .scoreboard-mobile-message {
+    display: none;
+  }
+
+  .scoreboard-start-button {
+    display: inline;
+  }
+
+  .scoreboard-instructions {
+    display: inline;
   }
 }

@@ -61,7 +61,7 @@ class ResultsModal extends React.Component {
                       (context.state.foundWords.length +
                         context.state.remainingMatches.length)) *
                     100
-                  ).toFixed(4)}%
+                  ).toFixed(2)}%
                 </h4>
                 <p className="resultsmodal-wordsfound">
                   {context.state.foundWords.length === 0
@@ -77,7 +77,7 @@ class ResultsModal extends React.Component {
                       (context.state.foundWords.length +
                         context.state.remainingMatches.length)) *
                     100
-                  ).toFixed(4)}%
+                  ).toFixed(2)}%
                 </h4>
                 <p className="resultsmodal-remainingwords">
                   {context.state.remainingMatches.length === 0

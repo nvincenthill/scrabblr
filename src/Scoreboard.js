@@ -12,6 +12,9 @@ class Scoreboard extends React.Component {
         {context => (
           <div className="scoreboard-wrapper">
             <div className="scoreboard">
+            <p className="scoreboard-mobile-message animated fadeIn">
+              Scrabblr is not yet availible for mobile or touch-screen devices
+            </p>
               {context.state.isInGameLoop ? (
                 <h2 className="scoreboard-score animated fadeIn">
                   Score <br /> {context.state.score}
