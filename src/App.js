@@ -35,14 +35,17 @@ class MyProvider extends React.Component {
   };
 
   // find all valid English words for a string of characters
-  generateMatches = string => {
-    let allPosible = this.permute__of_all_size(string.toLowerCase());
+  generateMatches = letters => {
+    // get an array of all possible permutations
+    let allPosible = this.permute__of_all_size(letters.toLowerCase());
     let results = [];
+    // check all posible permutations
     for (let i = 0; i < allPosible.length; i++) {
       if (Dictionary.hasOwnProperty(allPosible[i])) {
         results.push(allPosible[i]);
       }
     }
+    // filter out duplicates and sort by length
     results = [...new Set(results)].sort((a, b) => b.length - a.length);
     this.setState({ matches: results, remainingMatches: results });
     return results;
