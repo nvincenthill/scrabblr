@@ -37,12 +37,12 @@ class MyProvider extends React.Component {
   // find all valid English words for a string of characters
   generateMatches = letters => {
     // get an array of all possible permutations
-    let allPosible = this.permute__of_all_size(letters.toLowerCase());
+    let allPossible = this.getPermutationsAllLengths(letters.toLowerCase());
     let results = [];
     // check all posible permutations
-    for (let i = 0; i < allPosible.length; i++) {
-      if (Dictionary.hasOwnProperty(allPosible[i])) {
-        results.push(allPosible[i]);
+    for (let i = 0; i < allPossible.length; i++) {
+      if (Dictionary.hasOwnProperty(allPossible[i])) {
+        results.push(allPossible[i]);
       }
     }
     // filter out duplicates and sort by length
@@ -64,9 +64,7 @@ class MyProvider extends React.Component {
   getWord = () => {
     let wordLength = 8;
     let word = this.getWordFromDictionary(wordLength);
-    console.log(word);
     word = this.shuffleArray(word.split("")).join("");
-    console.log(word);
     this.setState({ randomWord: word });
     for (let i = 0; i < word.length; i++) {
       let temp = this.state.tiles;
@@ -271,7 +269,7 @@ class MyProvider extends React.Component {
   };
 
   // find all permutations for all lengths
-  permute__of_all_size = array => {
+  getPermutationsAllLengths = array => {
     let res = [];
     this.xpermute_rec(res, [], array);
     return res;
