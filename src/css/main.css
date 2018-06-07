@@ -85,7 +85,7 @@ body {
 /*  justify-self: end;*/
   color: #eee;
   background: var(--color3);
-  margin: 2vmax 4vmax 2vmax 2vmax;
+  margin: 2vmax 2vmax 2vmax 2vmax;
   padding: 1vmax;
   max-width: 560px;
   grid-column: span 1;
