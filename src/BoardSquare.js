@@ -1,11 +1,17 @@
 import React from "react";
+
+// external components
 import moment from "moment";
 import { times } from "lodash";
 import classNames from "classnames";
 import HTML5Backend from "react-dnd-html5-backend";
 import { DragSource, DropTarget, DragDropContext } from "react-dnd";
 import FlipMove from "react-flip-move";
+
+// helping functions
 import helpers from "./helpers.js";
+
+// context from provider
 import { MyContext } from "./App.js";
 
 const squareTarget = {

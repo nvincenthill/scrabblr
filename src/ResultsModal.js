@@ -1,9 +1,9 @@
 import React from "react";
 
-//external components
+// external components
 import { Modal, Button } from "react-bootstrap";
 
-//context from provider
+// context from provider
 import { MyContext } from "./App.js";
 
 class ResultsModal extends React.Component {

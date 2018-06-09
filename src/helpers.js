@@ -1,4 +1,5 @@
 //some helper functions
+//Joshua Comeau
 
 /**
  * Array.prototype.swap

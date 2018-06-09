@@ -281,7 +281,7 @@ class MyProvider extends React.Component {
     this.playSound("wood3");
   };
 
-  // play a click sound
+  // play a sound
   playSound = sound => {
     var audio = new Audio(`${sound}.mp3`);
     audio.volume = 0.2;

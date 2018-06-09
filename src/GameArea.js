@@ -1,6 +1,10 @@
 import React from "react";
-import { MyContext } from "./App.js";
+
+// internal components
 import Scrabble from "./Scrabble.js";
+
+//context from provider
+import { MyContext } from "./App.js";
 
 class GameArea extends React.Component {
   componentWillMount() {}

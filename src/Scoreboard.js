@@ -1,4 +1,6 @@
 import React from "react";
+
+// context from provider
 import { MyContext } from "./App.js";
 
 class Scoreboard extends React.Component {
