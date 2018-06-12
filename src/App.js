@@ -1,3 +1,4 @@
+// this is a react app
 import React from "react";
 
 // data
